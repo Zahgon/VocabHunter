@@ -1,16 +1,15 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.core;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 
 public class DelayedExecutorImpl implements DelayedExecutor {
+
     private static final Logger LOG = LoggerFactory.getLogger(DelayedExecutorImpl.class);
 
     private final Executor executor;
@@ -23,12 +22,12 @@ public class DelayedExecutorImpl implements DelayedExecutor {
 
     @Override
     public void beginExecution() {
-        latch.countDown();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void execute(final Runnable command) {
-        executor.execute(() -> wrapCommand(command));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void wrapCommand(final Runnable command) {

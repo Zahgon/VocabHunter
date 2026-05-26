@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.marked.WordState;
@@ -9,12 +8,12 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.binding.NumberExpression;
 import javafx.beans.property.SimpleIntegerProperty;
-
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
 public class ProgressModel {
+
     private static final double PERCENT = 100;
 
     private final SimpleIntegerProperty known = new SimpleIntegerProperty();
@@ -50,56 +49,55 @@ public class ProgressModel {
     }
 
     public SimpleIntegerProperty knownProperty() {
-        return known;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleIntegerProperty unknownProperty() {
-        return unknown;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleIntegerProperty unseenUnfilteredProperty() {
-        return unseenUnfiltered;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding unseenUnfilteredPercentVisibleProperty() {
-        return unseenUnfilteredPercentVisible;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleIntegerProperty unseenFilteredProperty() {
-        return unseenFiltered;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding markedProperty() {
-        return marked;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding totalProperty() {
-        return total;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding knownPercentProperty() {
-        return knownPercent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding unknownPercentProperty() {
-        return unknownPercent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding unseenUnfilteredPercentProperty() {
-        return unseenUnfilteredPercent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding unseenFilteredPercentProperty() {
-        return unseenFilteredPercent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public NumberBinding markedPercentVisibleProperty() {
-        return markedPercentVisible;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ProgressModel() {
         Map<WordState, SimpleIntegerProperty> map = new EnumMap<>(WordState.class);
-
         map.put(WordState.KNOWN, known);
         map.put(WordState.UNKNOWN, unknown);
         map.put(WordState.UNSEEN, unseenUnfiltered);
@@ -107,18 +105,11 @@ public class ProgressModel {
     }
 
     public void updateProgress(final int known, final int unknown, final int unseenUnfiltered, final int unseenFiltered) {
-        this.known.set(known);
-        this.unknown.set(unknown);
-        this.unseenUnfiltered.set(unseenUnfiltered);
-        this.unseenFiltered.set(unseenFiltered);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void updateWord(final WordState oldState, final WordState newState) {
-        SimpleIntegerProperty oldValue = properties.get(oldState);
-        SimpleIntegerProperty newValue = properties.get(newState);
-
-        updateValue(oldValue, -1);
-        updateValue(newValue, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void updateValue(final SimpleIntegerProperty property, final int delta) {

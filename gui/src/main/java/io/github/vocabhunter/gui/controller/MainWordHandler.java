@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.marked.WordState;
@@ -14,10 +13,10 @@ import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-
 import static javafx.beans.binding.Bindings.selectString;
 
 public class MainWordHandler {
+
     private final I18nManager i18nManager;
 
     private final Label mainWord;
@@ -30,9 +29,7 @@ public class MainWordHandler {
 
     private final ObjectBinding<WordState> wordStateProperty;
 
-    public MainWordHandler(
-        final I18nManager i18nManager, final Label mainWord, final Label useCountLabel, final Pane mainWordPane, final SessionModel sessionModel,
-        final ObjectBinding<WordState> wordStateProperty) {
+    public MainWordHandler(final I18nManager i18nManager, final Label mainWord, final Label useCountLabel, final Pane mainWordPane, final SessionModel sessionModel, final ObjectBinding<WordState> wordStateProperty) {
         this.i18nManager = i18nManager;
         this.mainWord = mainWord;
         this.useCountLabel = useCountLabel;
@@ -42,20 +39,11 @@ public class MainWordHandler {
     }
 
     public void prepare() {
-        SimpleObjectProperty<WordModel> currentWordProperty = sessionModel.currentWordProperty();
-
-        currentWordProperty.addListener((o, old, word) -> processWordUpdate(word));
-        mainWord.textProperty().bind(selectString(currentWordProperty, "wordIdentifier"));
-        currentWordProperty.addListener(o -> updateMainWordStateClasses());
-        wordStateProperty.addListener((o, old, state) -> updateMainWordStateClasses());
-        useCountLabel.textProperty().bind(i18nManager.textBinding(I18nKey.SESSION_WORD_USES, sessionModel.useCountProperty()));
-        updateMainWordStateClasses();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void processWordUpdate(final WordModel word) {
-        if (word != null) {
-            sessionModel.processWordUpdate(word);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void updateMainWordStateClasses() {

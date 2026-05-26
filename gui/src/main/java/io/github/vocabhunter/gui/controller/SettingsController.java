@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.settings.BaseListedFile;
@@ -23,14 +22,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.util.List;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
-
 import static io.github.vocabhunter.gui.common.FieldValueTool.*;
 
 public class SettingsController {
+
     @FXML
     private TextField fieldMinimumLetters;
 
@@ -81,36 +79,16 @@ public class SettingsController {
     private FilterFileListModel filterFilesModel;
 
     public void initialise(final Stage stage) {
-        this.stage = stage;
-
-        buttonOk.setOnAction(e -> exit(true));
-        buttonCancel.setOnAction(e -> exit(false));
-
-        FilterSettings settings = model.getFilterSettings();
-        initialiseField(fieldMinimumLetters, settings::getMinimumLetters);
-        initialiseField(fieldMinimumOccurrences, settings::getMinimumOccurrences);
-        initialiseField(fieldInitialCapital, settings::isAllowInitialCapitals);
-
-        List<FilterFileModel> filterFiles = settings.getFilterFiles().stream()
-            .map(translator::toModel)
-            .toList();
-
-        filterFilesModel = new FilterFileListModel(filterFiles);
-        listExcludedFiles.setItems(filterFilesModel.getFiles());
-        buttonAddGridFile.setOnAction(e -> processAddGridFile());
-        buttonAddSessionFile.setOnAction(e -> processAddSessionFile());
-        listExcludedFiles.setCellFactory(p -> new FilterFileCell(i18nManager, filterFilesModel::remove, this::editHandler));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void editHandler(final FilterFileModel model) {
         BaseFilterHandler<?> handler = getHandler(model);
-
         handler.show(model, () -> filterFilesModel.removeIfExists(model));
     }
 
     private BaseFilterHandler<?> getHandler(final FilterFileModel model) {
         FilterFileMode mode = model.getMode();
-
         if (mode == FilterFileMode.SESSION_KNOWN || mode == FilterFileMode.SESSION_SEEN) {
             return filterSessionHandler;
         } else {
@@ -120,26 +98,20 @@ public class SettingsController {
 
     private void processAddGridFile() {
         FileDialogue dialogue = factory.create(FileDialogueType.OPEN_WORD_LIST, stage);
-
         dialogue.showChooser();
-
         if (dialogue.isFileSelected()) {
             FileFormatType format = dialogue.getFileFormatType();
             FilterFileMode mode = FileFormatTypeTool.getMode(format);
             FilterFileModel fileModel = new FilterFileModel(dialogue.getSelectedFile(), mode, FilterGridModel.DEFAULT_COLUMNS);
-
             showHandler(filterGridHandler, fileModel);
         }
     }
 
     private void processAddSessionFile() {
         FileDialogue dialogue = factory.create(FileDialogueType.OPEN_SESSION, stage);
-
         dialogue.showChooser();
-
         if (dialogue.isFileSelected()) {
             FilterFileModel fileModel = new FilterFileModel(dialogue.getSelectedFile(), FilterFileMode.SESSION_KNOWN);
-
             showHandler(filterSessionHandler, fileModel);
         }
     }
@@ -160,12 +132,8 @@ public class SettingsController {
             int minimumLetters = getAsInteger(fieldMinimumLetters::getText, old.getMinimumLetters());
             int minimumOccurrences = getAsInteger(fieldMinimumOccurrences::getText, old.getMinimumOccurrences());
             boolean allowInitialCapitals = fieldInitialCapital.isSelected();
-            List<BaseListedFile> filterFiles = filterFilesModel.getFiles().stream()
-                .map(translator::fromModel)
-                .toList();
-
+            List<BaseListedFile> filterFiles = filterFilesModel.getFiles().stream().map(translator::fromModel).toList();
             FilterSettings settings = new FilterSettings(minimumLetters, minimumOccurrences, allowInitialCapitals, filterFiles);
-
             filterService.setFilterSettings(settings);
             model.setEnableFilters(true);
         }
@@ -175,7 +143,6 @@ public class SettingsController {
     private void initialiseField(final TextField field, final Supplier<Object> settingGetter) {
         StringProperty textProperty = field.textProperty();
         ReadOnlyBooleanProperty focusedProperty = field.focusedProperty();
-
         field.setText(settingGetter.get().toString());
         textProperty.addListener((o, oldValue, newValue) -> cleanNonNegativeInteger(field::setText, newValue, oldValue));
         focusedProperty.addListener((o, old, isFocused) -> applyDefaultIfEmpty(field::setText, field::getText, settingGetter));
@@ -183,7 +150,6 @@ public class SettingsController {
 
     private void initialiseField(final CheckBox field, final BooleanSupplier settingGetter) {
         boolean value = settingGetter.getAsBoolean();
-
         field.setSelected(value);
     }
 }

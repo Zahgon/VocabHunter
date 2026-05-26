@@ -1,17 +1,16 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.settings;
 
 import io.github.vocabhunter.analysis.core.FileTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class BaseSettingsManager<T> {
+
     private static final Logger LOG = LoggerFactory.getLogger(BaseSettingsManager.class);
 
     private final Path settingsFile;
@@ -29,14 +28,7 @@ public class BaseSettingsManager<T> {
     }
 
     protected T readSettings() {
-        T result = readSettingsIfAvailable();
-
-        if (result == null) {
-            FileTool.writeMinimalJson(settingsFile, "Unable to save settings file '%s'");
-            result = readSettingsIfAvailable();
-        }
-
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private T readSettingsIfAvailable() {
@@ -48,12 +40,11 @@ public class BaseSettingsManager<T> {
             }
         } catch (final Exception e) {
             LOG.error("Discarding unreadable settings file '{}'", settingsFile, e);
-
             return null;
         }
     }
 
     protected void writeSettings(final T settings) {
-        FileTool.writeAsJson(settingsFile, settings, "Unable to save settings file '%s'");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

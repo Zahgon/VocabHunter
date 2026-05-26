@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.common.BuildInfo;
@@ -17,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class AboutController {
+
     private final I18nManager i18nManager;
 
     private final WebPageTool webPageTool;
@@ -46,12 +46,6 @@ public class AboutController {
     }
 
     public void initialise(final Stage stage) {
-        buttonClose.setOnAction(e -> stage.close());
-        linkWebsite.setOnAction(e -> webPageTool.showWebPage(I18nKey.LINK_MAIN));
-        linkTwitter.setOnAction(e -> webPageTool.showWebPage(GuiConstants.TWITTER));
-        linkGithub.setOnAction(e -> webPageTool.showWebPage(GuiConstants.GITHUB));
-        linkGithubStar.setOnAction(e -> webPageTool.showWebPage(GuiConstants.GITHUB));
-
-        labelVersion.setText(i18nManager.text(I18nKey.ABOUT_VERSION, BuildInfo.version()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

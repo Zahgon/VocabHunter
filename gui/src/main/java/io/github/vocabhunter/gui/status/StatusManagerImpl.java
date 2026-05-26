@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.status;
 
 import io.github.vocabhunter.analysis.session.FileNameTool;
@@ -17,15 +16,14 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import static io.github.vocabhunter.gui.i18n.I18nKey.*;
 import static javafx.beans.binding.Bindings.*;
 
 @Singleton
 public class StatusManagerImpl implements StatusManager {
+
     private static final Logger LOG = LoggerFactory.getLogger(StatusManagerImpl.class);
 
     private final I18nManager i18nManager;
@@ -56,42 +54,37 @@ public class StatusManagerImpl implements StatusManager {
 
     @Inject
     public void setStatusModel(final StatusModel model) {
-        model.textProperty().bind(when(busy).then(actionDescription).otherwise(positionDescription));
-        model.busyProperty().bind(busy);
-        model.activityProperty().bind(when(busy).then(-1).otherwise(0));
-        model.graphShownProperty().bind(and(sessionAvailable, not(busy)));
-        model.markedFractionProperty().bind(divide(markedPercentage, 100));
-        model.graphTextProperty().bind(graphText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean beginNewSession() {
-        return begin(STATUS_ACTION_NEW);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean beginOpenSession() {
-        return begin(STATUS_ACTION_OPEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean beginSaveSession() {
-        return begin(STATUS_ACTION_SAVE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean beginExport() {
-        return begin(STATUS_ACTION_EXPORT);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean beginExit() {
-        return begin(STATUS_ACTION_EXIT);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean beginAbout() {
-        return begin(STATUS_ACTION_ABOUT);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private boolean begin(final I18nKey key) {
@@ -100,7 +93,6 @@ public class StatusManagerImpl implements StatusManager {
             LOG.debug("Begin: {}", currentAction);
             actionDescription.setValue(i18nManager.text(key));
             busy.setValue(true);
-
             return true;
         } else {
             return false;
@@ -109,38 +101,27 @@ public class StatusManagerImpl implements StatusManager {
 
     @Override
     public void performAction(final Path file) {
-        LOG.debug("Perform: {}", currentAction);
-        actionDescription.setValue(String.format("%s: '%s'...", i18nManager.text(currentAction), FileNameTool.filename(file)));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void markSuccess() {
-        LOG.debug("Success: {}", currentAction);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void completeAction() {
-        LOG.debug("Complete: {}", currentAction);
-        busy.setValue(false);
-        gatekeeper.set(false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void clearSession() {
-        resetSession();
-        positionDescription.set("");
-        markedPercentage.set(0);
-        graphText.set("");
-        sessionAvailable.set(false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void replaceSession(final PositionModel position, final ProgressModel progress) {
-        resetSession();
-        positionDescription.bind(positionDescriptionTool.createBinding(position, progress));
-        markedPercentage.bind(progress.markedPercentVisibleProperty());
-        graphText.bind(i18nManager.textBinding(STATUS_MARKED_PERCENTAGE, markedPercentage));
-        sessionAvailable.set(true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void resetSession() {

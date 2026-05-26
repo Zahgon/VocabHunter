@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import jakarta.inject.Singleton;
@@ -11,6 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 @Singleton
 public class StatusModel {
+
     private final SimpleStringProperty text = new SimpleStringProperty();
 
     private final SimpleDoubleProperty activity = new SimpleDoubleProperty();
@@ -24,26 +24,26 @@ public class StatusModel {
     private final SimpleStringProperty graphText = new SimpleStringProperty();
 
     public SimpleStringProperty textProperty() {
-        return text;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleDoubleProperty activityProperty() {
-        return activity;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty busyProperty() {
-        return busy;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty graphShownProperty() {
-        return graphShown;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleDoubleProperty markedFractionProperty() {
-        return markedFraction;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleStringProperty graphTextProperty() {
-        return graphText;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

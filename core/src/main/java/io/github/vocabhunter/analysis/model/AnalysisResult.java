@@ -1,12 +1,12 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.model;
 
 import java.util.List;
 
 public final class AnalysisResult {
+
     private final String name;
 
     private final List<WordUse> orderedUses;
@@ -20,14 +20,14 @@ public final class AnalysisResult {
     }
 
     public String getName() {
-        return name;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<WordUse> getOrderedUses() {
-        return orderedUses;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<String> getLines() {
-        return lines;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.filter.WordFilter;
@@ -11,14 +10,13 @@ import jakarta.inject.Singleton;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-
 import java.nio.file.Path;
 import java.util.Optional;
-
 import static javafx.beans.binding.Bindings.isNotEmpty;
 
 @Singleton
 public class MainModel {
+
     private final SimpleStringProperty title = new SimpleStringProperty();
 
     private SessionState sessionState;
@@ -46,26 +44,15 @@ public class MainModel {
     private WordFilter filter;
 
     public void clearSessionModel() {
-        resetSessionModel(null, null, null, false);
-        selectionAvailable.setValue(false);
-        editMode.setValue(true);
-        documentName.setValue(null);
-        changesSaved.setValue(true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void replaceSessionModel(final SessionState sessionState, final SessionModel sessionModel, final Path sessionFile) {
-        resetSessionModel(sessionState, sessionModel, sessionFile, true);
-        selectionAvailable.bind(isNotEmpty(sessionModel.getSelectedWords()));
-        editMode.bindBidirectional(sessionModel.editableProperty());
-        sessionModel.filterSettingsProperty().bindBidirectional(filterSettings);
-        sessionModel.enableFiltersProperty().bindBidirectional(enableFilters);
-        documentName.bind(sessionModel.documentNameProperty());
-        changesSaved.bindBidirectional(sessionModel.changesSavedProperty());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void resetSessionModel(final SessionState sessionState, final SessionModel sessionModel, final Path sessionFile, final boolean isSessionOpen) {
         unbindOldSession();
-
         this.sessionState = sessionState;
         this.sessionModel = sessionModel;
         this.sessionFile.set(sessionFile);
@@ -84,114 +71,114 @@ public class MainModel {
     }
 
     public SimpleObjectProperty<Path> sessionFileProperty() {
-        return sessionFile;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleStringProperty titleProperty() {
-        return title;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setTitle(final String title) {
-        this.title.set(title);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleStringProperty documentNameProperty() {
-        return documentName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getDocumentName() {
-        return documentName.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty changesSavedProperty() {
-        return changesSaved;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setChangesSaved(final boolean changesSaved) {
-        this.changesSaved.set(changesSaved);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isChangesSaved() {
-        return changesSaved.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty sessionOpenProperty() {
-        return sessionOpen;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isSessionOpen() {
-        return sessionOpen.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setSessionOpen(final boolean sessionOpen) {
-        this.sessionOpen.set(sessionOpen);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty selectionAvailableProperty() {
-        return selectionAvailable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty editModeProperty() {
-        return editMode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleObjectProperty<FilterSettings> filterSettingsProperty() {
-        return filterSettings;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFilterSettings(final FilterSettings filterSettings) {
-        this.filterSettings.set(filterSettings);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterSettings getFilterSettings() {
-        return filterSettings.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFilter(final WordFilter filter) {
-        this.filter = filter;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public WordFilter getFilter() {
-        return filter;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty enableFiltersProperty() {
-        return enableFilters;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setEnableFilters(final boolean enableFilters) {
-        this.enableFilters.set(enableFilters);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setSessionFile(final Path sessionFile) {
-        this.sessionFile.set(sessionFile);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean hasSessionFile() {
-        return sessionFile.getValue() != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Path getSessionFile() {
-        return sessionFile.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Optional<SessionState> getSessionState() {
-        return Optional.ofNullable(sessionState);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Optional<SessionModel> getSessionModel() {
-        return Optional.ofNullable(sessionModel);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setLocale(final SupportedLocale locale) {
-        this.locale.set(locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isLocaleDefined() {
-        return locale.isNotNull().get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleObjectProperty<SupportedLocale> localeProperty() {
-        return locale;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

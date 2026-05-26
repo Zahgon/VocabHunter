@@ -1,22 +1,20 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.session.FileNameTool;
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.util.Callback;
-
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class FilterFileModel {
-    public static final Callback<FilterFileModel, Observable[]> PROPERTY_EXTRACTOR
-        = m -> new Observable[] {m.file, m.modeProperty};
+
+    public static final Callback<FilterFileModel, Observable[]> PROPERTY_EXTRACTOR = m -> new Observable[] { m.file, m.modeProperty };
 
     private final SimpleObjectProperty<Path> file;
 
@@ -35,30 +33,30 @@ public class FilterFileModel {
     }
 
     public FilterFileMode getMode() {
-        return modeProperty.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setMode(final FilterFileMode mode) {
-        modeProperty.set(mode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getName() {
-        return FileNameTool.filename(file.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Path getFile() {
-        return file.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFile(final Path file) {
-        this.file.set(file);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Set<Integer> getColumns() {
-        return Collections.unmodifiableSet(columns);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setColumns(final Set<Integer> columns) {
-        this.columns = new TreeSet<>(columns);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

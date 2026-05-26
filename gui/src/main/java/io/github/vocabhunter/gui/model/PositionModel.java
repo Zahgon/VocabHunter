@@ -1,13 +1,13 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class PositionModel {
+
     private final SimpleIntegerProperty positionIndex = new SimpleIntegerProperty();
 
     private final SimpleIntegerProperty size = new SimpleIntegerProperty();
@@ -17,50 +17,50 @@ public class PositionModel {
     private final SimpleBooleanProperty editable = new SimpleBooleanProperty(true);
 
     public SimpleIntegerProperty positionIndexProperty() {
-        return positionIndex;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getPositionIndex() {
-        return positionIndex.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setPositionIndex(final int positionIndex) {
-        this.positionIndex.set(positionIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleIntegerProperty sizeProperty() {
-        return size;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getSize() {
-        return size.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setSize(final int size) {
-        this.size.set(size);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty analysisModeProperty() {
-        return analysisMode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setAnalysisMode(final boolean analysisMode) {
-        this.analysisMode.set(analysisMode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isAnalysisMode() {
-        return analysisMode.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty editableProperty() {
-        return editable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isEditable() {
-        return editable.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setEditable(final boolean editable) {
-        this.editable.set(editable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

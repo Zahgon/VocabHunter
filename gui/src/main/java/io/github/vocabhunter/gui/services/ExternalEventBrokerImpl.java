@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.services;
 
 import java.nio.file.Path;
@@ -12,7 +11,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 public class ExternalEventBrokerImpl implements ExternalEventBroker {
+
     private enum BrokerStateComponent {
+
         FILE_RECEIVED, DISPLAY_SHOWN, GUI_OPEN
     }
 
@@ -24,34 +25,28 @@ public class ExternalEventBrokerImpl implements ExternalEventBroker {
 
     @Override
     public void openFile(final Path file) {
-        fileReference.set(file);
-        transitionState(BrokerStateComponent.FILE_RECEIVED);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void markMainDisplayShown() {
-        transitionState(BrokerStateComponent.DISPLAY_SHOWN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void markGuiOpen(final Consumer<Path> fileProcessor) {
-        this.fileProcessor = fileProcessor;
-        transitionState(BrokerStateComponent.GUI_OPEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void transitionState(final BrokerStateComponent component) {
         Set<BrokerStateComponent> oldState;
         Set<BrokerStateComponent> newState;
-
         do {
             oldState = state.get();
             newState = addStateComponent(oldState, component);
-        }
-        while (!state.compareAndSet(oldState, newState));
-
+        } while (!state.compareAndSet(oldState, newState));
         if (newState.equals(EnumSet.allOf(BrokerStateComponent.class))) {
             Path file = fileReference.getAndSet(null);
-
             if (file != null) {
                 fileProcessor.accept(file);
             }
@@ -60,9 +55,7 @@ public class ExternalEventBrokerImpl implements ExternalEventBroker {
 
     private Set<BrokerStateComponent> addStateComponent(final Collection<BrokerStateComponent> oldSet, final BrokerStateComponent component) {
         var newSet = EnumSet.copyOf(oldSet);
-
         newSet.add(component);
-
         return newSet;
     }
 }

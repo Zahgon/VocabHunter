@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.executable.console;
 
 import com.beust.jcommander.JCommander;
@@ -18,7 +17,6 @@ import io.github.vocabhunter.analysis.session.SessionWordsToolImpl;
 import io.github.vocabhunter.analysis.simple.SimpleAnalyser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -30,6 +28,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public final class VocabHunterConsoleExecutable {
+
     private static final Logger LOG = LoggerFactory.getLogger(VocabHunterConsoleExecutable.class);
 
     private VocabHunterConsoleExecutable() {
@@ -37,35 +36,7 @@ public final class VocabHunterConsoleExecutable {
     }
 
     public static void main(final String... args) {
-        try {
-            Instant start = Instant.now();
-            VocabHunterConsoleArguments bean = new VocabHunterConsoleArguments();
-            JCommander jCommander = JCommander.newBuilder()
-                .addObject(bean)
-                .build();
-
-            jCommander.parse(args);
-            if (bean.isHelpRequested()) {
-                jCommander.usage();
-            } else {
-                String output = bean.getOutput();
-
-                if (output == null) {
-                    processInput(bean, new PrintWriter(new OutputStreamWriter(System.out, CoreConstants.CHARSET), true));
-                } else {
-                    try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(Paths.get(output)))) {
-                        processInput(bean, out);
-                    }
-                }
-
-                Instant end = Instant.now();
-                Duration duration = Duration.between(start, end);
-                LOG.info("\nExecution time: {}ms", duration.toMillis());
-            }
-        } catch (final Exception e) {
-            LOG.error("Application error", e);
-            LOG.error("Use -help to show the command-line options");
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static void processInput(final VocabHunterConsoleArguments bean, final PrintWriter out) {
@@ -76,32 +47,23 @@ public final class VocabHunterConsoleExecutable {
             FileStreamer streamer = new FileStreamer(textReader, analyser);
             WordFilter wordFilter = buildFilter(bean);
             AnalysisResult model = streamer.analyse(file);
-
-            model.getOrderedUses().stream()
-                    .filter(wordFilter::isShown)
-                    .forEach(w -> display(out, model.getLines(), w, bean.isHideUses()));
+            model.getOrderedUses().stream().filter(wordFilter::isShown).forEach(w -> display(out, model.getLines(), w, bean.isHideUses()));
         }
     }
 
     private static WordFilter buildFilter(final VocabHunterConsoleArguments bean) {
         SessionWordsTool sessionWordsTool = new SessionWordsToolImpl();
-        FilterBuilder builder = new FilterBuilder()
-            .minimumLetters(bean.getMinLetters())
-            .minimumOccurrences(bean.getMinOccurrences());
-
+        FilterBuilder builder = new FilterBuilder().minimumLetters(bean.getMinLetters()).minimumOccurrences(bean.getMinOccurrences());
         if (bean.isIgnoreInitialCapitals()) {
             builder.excludeInitialCapital();
         }
         addFilteredWords(builder, bean.getFilterKnown(), sessionWordsTool::knownWords);
         addFilteredWords(builder, bean.getFilterSeen(), sessionWordsTool::seenWords);
-
         return builder.build();
     }
 
     private static void addFilteredWords(final FilterBuilder builder, final List<Path> filenames, final Function<Path, List<String>> extractor) {
-        filenames.stream()
-            .map(extractor)
-            .forEach(builder::addExcludedWords);
+        filenames.stream().map(extractor).forEach(builder::addExcludedWords);
     }
 
     private static void display(final PrintWriter out, final List<String> lines, final WordUse use, final boolean isHideUses) {
@@ -109,8 +71,7 @@ public final class VocabHunterConsoleExecutable {
             out.printf("%s (%s)%n", use.getWordIdentifier(), use.getUseCount());
         } else {
             out.printf("%n%s (%s):%n", use.getWordIdentifier(), use.getUseCount());
-            use.getLineNos()
-                .forEach(n -> out.printf(" - %s%n", lines.get(n)));
+            use.getLineNos().forEach(n -> out.printf(" - %s%n", lines.get(n)));
         }
     }
 }

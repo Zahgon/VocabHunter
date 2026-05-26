@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.i18n.I18nKey;
@@ -16,12 +15,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
 import java.util.Arrays;
 import java.util.List;
 
 @Singleton
 public class LanguageController {
+
     private static final String STYLE_BUTTON = "languageButton";
 
     private static final Duration FADE_DURATION = Duration.seconds(1.5);
@@ -49,8 +48,7 @@ public class LanguageController {
     }
 
     public void initialise() {
-        initialiseTitle();
-        initialiseButtons();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void initialiseTitle() {
@@ -74,25 +72,20 @@ public class LanguageController {
     }
 
     private void initialiseButtons() {
-        List<Button> buttons = Arrays.stream(SupportedLocale.values())
-            .map(this::button)
-            .toList();
-
+        List<Button> buttons = Arrays.stream(SupportedLocale.values()).map(this::button).toList();
         boxLanguageButtons.getChildren().addAll(buttons);
     }
 
     private Button button(final SupportedLocale l) {
         Button button = new Button(i18nManager.text(l, I18nKey.LANGUAGE_NAME));
-
         button.setId(l.name());
         button.getStyleClass().add(STYLE_BUTTON);
         languageHandler.setupLanguageSelectionControl(l, button);
-
         return button;
     }
 
     public void closeView() {
-        Platform.runLater(this::stopTitleAnimation);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void stopTitleAnimation() {

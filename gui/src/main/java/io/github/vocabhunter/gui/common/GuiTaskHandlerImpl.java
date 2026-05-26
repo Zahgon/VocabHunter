@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.common;
 
 import io.github.vocabhunter.analysis.core.ThreadPoolTool;
@@ -10,12 +9,12 @@ import jakarta.inject.Singleton;
 import javafx.application.Platform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
 @Singleton
 public class GuiTaskHandlerImpl implements GuiTaskHandler {
+
     private static final Logger LOG = LoggerFactory.getLogger(GuiTaskHandlerImpl.class);
 
     private static final int WAIT_MILLIS = 100;
@@ -36,17 +35,17 @@ public class GuiTaskHandlerImpl implements GuiTaskHandler {
 
     @Override
     public void executeInBackground(final Runnable task) {
-        executor.execute(task);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void executeOnGuiThread(final Runnable task) {
-        guiThreadRunner.accept(task);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void pauseThenExecuteOnGuiThread(final Runnable task) {
-        executor.execute(() -> waitAndRun(task));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void waitAndRun(final Runnable task) {

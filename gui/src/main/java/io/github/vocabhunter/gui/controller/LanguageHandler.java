@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.i18n.I18nManager;
@@ -18,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 @Singleton
 public class LanguageHandler {
+
     private static final Logger LOG = LoggerFactory.getLogger(LanguageHandler.class);
 
     private final MainModel mainModel;
@@ -42,23 +42,15 @@ public class LanguageHandler {
     }
 
     public void initialise() {
-        SupportedLocale locale = settingsManager.getLocale()
-            .orElse(null);
-
-        mainModel.setLocale(locale);
-        if (locale == null) {
-            locale = SupportedLocale.DEFAULT_LOCALE;
-        }
-
-        i18nManager.setupLocale(locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void initialiseSceneSwitcher(final Runnable sceneSwitcher) {
-        this.sceneSwitcher = sceneSwitcher;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setupControl(final MenuItem menuLanguage) {
-        menuLanguage.setOnAction(e -> openChangeLanguageDialogueAction());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void openChangeLanguageDialogueAction() {
@@ -71,7 +63,7 @@ public class LanguageHandler {
     }
 
     public void setupLanguageSelectionControl(final SupportedLocale locale, final Button button) {
-        button.setOnAction(e -> localeSelectionAction(locale));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void localeSelectionAction(final SupportedLocale locale) {

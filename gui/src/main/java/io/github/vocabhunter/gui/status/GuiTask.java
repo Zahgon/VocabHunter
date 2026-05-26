@@ -1,16 +1,15 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.status;
 
 import io.github.vocabhunter.gui.common.GuiTaskHandler;
 import javafx.concurrent.Task;
-
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class GuiTask<T> extends Task<Void> {
+
     private final GuiTaskHandler guiTaskHandler;
 
     private final StatusManager statusManager;
@@ -35,18 +34,7 @@ public class GuiTask<T> extends Task<Void> {
 
     @Override
     protected Void call() {
-        try {
-            T result = body.get();
-
-            if (result != null) {
-                guiTaskHandler.executeOnGuiThread(() -> afterBody(result));
-            }
-        } catch (final RuntimeException e) {
-            guiTaskHandler.executeOnGuiThread(() -> errorHandler.accept(e));
-        } finally {
-            guiTaskHandler.executeOnGuiThread(statusManager::completeAction);
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void afterBody(final T result) {

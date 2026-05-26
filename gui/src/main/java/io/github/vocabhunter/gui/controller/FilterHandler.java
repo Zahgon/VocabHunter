@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.settings.BaseListedFile;
@@ -12,11 +11,11 @@ import io.github.vocabhunter.gui.services.FilterService;
 import io.github.vocabhunter.gui.settings.SettingsManager;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-
 import java.util.List;
 
 @Singleton
 public class FilterHandler {
+
     private final MainModel model;
 
     private final SettingsManager settingsManager;
@@ -34,14 +33,7 @@ public class FilterHandler {
     }
 
     public void initialise() {
-        int minimumLetters = settingsManager.getFilterMinimumLetters();
-        int minimumOccurrences = settingsManager.getFilterMinimumOccurrences();
-        boolean allowInitialCapitals = settingsManager.isAllowInitialCapitals();
-        List<BaseListedFile> filterFiles = fileListManager.getFilterFiles();
-        FilterSettings settings = new FilterSettings(minimumLetters, minimumOccurrences, allowInitialCapitals, filterFiles);
-
-        filterService.setFilterSettings(settings);
-        model.filterSettingsProperty().addListener((o, old, v) -> updateFilterSettings(v));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void updateFilterSettings(final FilterSettings settings) {

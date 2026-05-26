@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.search;
 
 import io.github.vocabhunter.gui.common.SequencedWord;
@@ -10,6 +9,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public final class SearchResult<T extends SequencedWord> {
+
     private final String matchDescription;
 
     private final T previousMatch;
@@ -33,65 +33,37 @@ public final class SearchResult<T extends SequencedWord> {
     }
 
     public String getMatchDescription() {
-        return matchDescription;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public T getPreviousMatch() {
-        return previousMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public T getNextMatch() {
-        return nextMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public T getWrapMatch() {
-        return wrapMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isSearchFail() {
-        return isSearchFail;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        SearchResult<?> that = (SearchResult<?>) o;
-
-        return new EqualsBuilder()
-            .append(isSearchFail, that.isSearchFail)
-            .append(matchDescription, that.matchDescription)
-            .append(previousMatch, that.previousMatch)
-            .append(wrapMatch, that.wrapMatch)
-            .append(nextMatch, that.nextMatch)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(matchDescription)
-            .append(previousMatch)
-            .append(nextMatch)
-            .append(wrapMatch)
-            .append(isSearchFail)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-            .append("matchDescription", matchDescription)
-            .append("previousMatch", previousMatch)
-            .append("nextMatch", nextMatch)
-            .append("wrapMatch", wrapMatch)
-            .append("isSearchFail", isSearchFail)
-            .toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

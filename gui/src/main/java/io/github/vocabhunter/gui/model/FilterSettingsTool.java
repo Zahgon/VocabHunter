@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.core.DelayedExecutor;
@@ -15,6 +14,7 @@ import jakarta.inject.Singleton;
 
 @Singleton
 public class FilterSettingsTool {
+
     private final FilterFileWordsExtractor extractor;
 
     private final DelayedExecutor executor;
@@ -26,20 +26,7 @@ public class FilterSettingsTool {
     }
 
     public WordFilter filter(final FilterSettings settings) {
-        FilterBuilder builder = new FilterBuilder();
-
-        builder.executor(executor);
-        builder = builder.minimumLetters(settings.getMinimumLetters())
-            .minimumOccurrences(settings.getMinimumOccurrences());
-
-        if (!settings.isAllowInitialCapitals()) {
-            builder = builder.excludeInitialCapital();
-        }
-        for (BaseListedFile file : settings.getFilterFiles()) {
-            builder = addFilter(builder, file);
-        }
-
-        return builder.build();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private FilterBuilder addFilter(final FilterBuilder builder, final BaseListedFile file) {
@@ -47,6 +34,6 @@ public class FilterSettingsTool {
     }
 
     public void beginAsyncFiltering() {
-        executor.beginExecution();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

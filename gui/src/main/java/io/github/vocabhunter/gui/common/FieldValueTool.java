@@ -1,16 +1,15 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public final class FieldValueTool {
+
     private static final Logger LOG = LoggerFactory.getLogger(FieldValueTool.class);
 
     private FieldValueTool() {
@@ -18,31 +17,15 @@ public final class FieldValueTool {
     }
 
     public static int getAsInteger(final Supplier<String> fieldGetter, final int defaultValue) {
-        String text = fieldGetter.get();
-
-        try {
-            return Integer.parseInt(text);
-        } catch (final NumberFormatException e) {
-            LOG.debug("Illegal field value", e);
-
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void applyDefaultIfEmpty(final Consumer<String> fieldSetter, final Supplier<String> fieldGetter, final Supplier<Object> defaultGetter) {
-        String text = fieldGetter.get();
-
-        if (text.isEmpty()) {
-            fieldSetter.accept(defaultGetter.get().toString());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void cleanNonNegativeInteger(final Consumer<String> fieldSetter, final String newValue, final String oldValue) {
-        String clean = getAsCleanNonNegativeInteger(oldValue, newValue);
-
-        if (!clean.equals(newValue)) {
-            fieldSetter.accept(clean);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static String getAsCleanNonNegativeInteger(final String oldValue, final String newValue) {
@@ -51,14 +34,12 @@ public final class FieldValueTool {
         } else {
             try {
                 int n = Integer.parseInt(newValue);
-
                 if (n >= 0) {
                     return Integer.toString(n);
                 }
             } catch (final NumberFormatException e) {
                 LOG.debug("Illegal field value", e);
             }
-
             return oldValue;
         }
     }

@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.marked.MarkedWord;
@@ -12,13 +11,13 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.value.ObservableNumberValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FilterSessionModel extends AbstractFilterModel {
+
     private final SimpleLongProperty knownCount = new SimpleLongProperty();
 
     private final SimpleLongProperty seenCount = new SimpleLongProperty();
@@ -34,49 +33,43 @@ public class FilterSessionModel extends AbstractFilterModel {
     }
 
     public void replaceContent(final Path file, final List<? extends MarkedWord> words) {
-        replaceContent(file);
-        setupValues(words);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void setupValues(final List<? extends MarkedWord> words) {
-        Map<WordState, Long> counts = words.stream()
-            .collect(Collectors.groupingBy(MarkedWord::getState, Collectors.counting()));
-
+        Map<WordState, Long> counts = words.stream().collect(Collectors.groupingBy(MarkedWord::getState, Collectors.counting()));
         knownCount.set(counts.getOrDefault(WordState.KNOWN, 0L));
         seenCount.set(counts.getOrDefault(WordState.UNKNOWN, 0L) + knownCount.get());
         seenWords.clear();
-        words.stream()
-            .filter(w -> w.getState() != WordState.UNSEEN)
-            .map(FilterSessionWord::new)
-            .forEach(seenWords::add);
+        words.stream().filter(w -> w.getState() != WordState.UNSEEN).map(FilterSessionWord::new).forEach(seenWords::add);
     }
 
     @Override
     public ObservableNumberValue wordCountProperty() {
-        return Bindings.when(includeUnknown).then(seenCount).otherwise(knownCount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public long getKnownCount() {
-        return knownCount.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public long getSeenCount() {
-        return seenCount.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty includeUnknownProperty() {
-        return includeUnknown;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isIncludeUnknown() {
-        return includeUnknown.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setIncludeUnknown(final boolean isIncludeUnknown) {
-        includeUnknown.set(isIncludeUnknown);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObservableList<FilterSessionWord> getSeenWords() {
-        return seenWords;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

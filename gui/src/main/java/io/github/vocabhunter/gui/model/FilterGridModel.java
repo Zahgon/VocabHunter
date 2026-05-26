@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.grid.GridLine;
@@ -13,7 +12,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableIntegerValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class FilterGridModel extends AbstractFilterModel {
+
     public static final Set<Integer> DEFAULT_COLUMNS = Set.of(0);
 
     private final ObservableList<GridLine> lines = FXCollections.observableArrayList();
@@ -40,15 +39,13 @@ public class FilterGridModel extends AbstractFilterModel {
     }
 
     public void replaceContent(final Path file, final TextGrid grid, final FilterFileMode mode, final Set<Integer> columns) {
-        replaceContent(file);
-        setupValues(grid, mode, columns);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void setupValues(final TextGrid grid, final FilterFileMode mode, final Set<Integer> columns) {
         this.grid = grid;
         this.mode = mode;
         lines.setAll(grid.getLines());
-
         columnSelections.setAll(buildColumnProperties(columns));
         count.unbind();
         count.bind(Bindings.createIntegerBinding(this::calculateCount, selectionsArray()));
@@ -59,40 +56,32 @@ public class FilterGridModel extends AbstractFilterModel {
     }
 
     private List<BooleanProperty> buildColumnProperties(final Set<Integer> columns) {
-        return columnIndexStream()
-            .<BooleanProperty>mapToObj(i -> new SimpleBooleanProperty(columns.contains(i)))
-            .toList();
+        return columnIndexStream().<BooleanProperty>mapToObj(i -> new SimpleBooleanProperty(columns.contains(i))).toList();
     }
 
     @Override
     public ObservableIntegerValue wordCountProperty() {
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private int calculateCount() {
-        return columnIndexStream()
-            .filter(this::isSelectedColumn)
-            .map(i -> grid.getColumns().get(i).getAcceptedCount())
-            .sum();
+        return columnIndexStream().filter(this::isSelectedColumn).map(i -> grid.getColumns().get(i).getAcceptedCount()).sum();
     }
 
     public ObservableList<GridLine> getLines() {
-        return lines;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterFileMode getMode() {
-        return mode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObservableList<BooleanProperty> getColumnSelections() {
-        return columnSelections;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Set<Integer> getColumns() {
-        return columnIndexStream()
-            .filter(this::isSelectedColumn)
-            .boxed()
-            .collect(Collectors.toSet());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private boolean isSelectedColumn(final int i) {
@@ -104,6 +93,6 @@ public class FilterGridModel extends AbstractFilterModel {
     }
 
     public int getColumnCount() {
-        return grid.getColumns().size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

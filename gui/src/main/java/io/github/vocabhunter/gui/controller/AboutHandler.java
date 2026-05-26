@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.common.ControllerAndView;
@@ -17,6 +16,7 @@ import javafx.stage.StageStyle;
 
 @Singleton
 public class AboutHandler {
+
     private final FxmlHandler fxmlHandler;
 
     @Inject
@@ -25,13 +25,7 @@ public class AboutHandler {
     }
 
     public void show() {
-        Stage stage = new Stage();
-        ControllerAndView<AboutController, Parent> cav = fxmlHandler.loadControllerAndView(ViewFxml.ABOUT);
-        Parent root = cav.getView();
-        AboutController controller = cav.getController();
-
-        controller.initialise(stage);
-        setupStage(stage, root);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void setupStage(final Stage stage, final Parent root) {

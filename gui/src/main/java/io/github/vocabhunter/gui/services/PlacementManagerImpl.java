@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.services;
 
 import io.github.vocabhunter.gui.common.Placement;
@@ -9,11 +8,11 @@ import io.github.vocabhunter.gui.settings.SettingsManager;
 import io.github.vocabhunter.gui.settings.WindowSettings;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-
 import java.util.Optional;
 
 @Singleton
 public class PlacementManagerImpl implements PlacementManager {
+
     public static final double WINDOW_SIZE_FACTOR = 0.85;
 
     private final EnvironmentManager environmentManager;
@@ -28,11 +27,7 @@ public class PlacementManagerImpl implements PlacementManager {
 
     @Override
     public Placement getMainWindow() {
-        Optional<WindowSettings> settings = settingsManager.getWindowSettings();
-
-        return settings.map(this::windowPlacement)
-            .filter(environmentManager::isVisible)
-            .orElseGet(this::defaultWindowPlacement);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Placement windowPlacement(final WindowSettings settings) {
@@ -43,7 +38,6 @@ public class PlacementManagerImpl implements PlacementManager {
         Placement screenSize = environmentManager.getScreenSize();
         double width = screenSize.width() * WINDOW_SIZE_FACTOR;
         double height = screenSize.height() * WINDOW_SIZE_FACTOR;
-
         return new Placement(width, height);
     }
 }

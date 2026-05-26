@@ -1,13 +1,13 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 public final class SessionActions {
+
     private final EventHandler<KeyEvent> keyPressHandler;
 
     private final Runnable openSearchAction;
@@ -21,14 +21,14 @@ public final class SessionActions {
     }
 
     public EventHandler<KeyEvent> getKeyPressHandler() {
-        return keyPressHandler;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Runnable getOpenSearchAction() {
-        return openSearchAction;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Runnable getCopyWordAction() {
-        return copyWordAction;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

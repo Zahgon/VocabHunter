@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.view.ErrorClassTool;
@@ -17,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import org.controlsfx.control.textfield.CustomTextField;
 
 public class SearchControls {
+
     private final ToolBar barSearch;
 
     private final CustomTextField fieldSearch;
@@ -29,9 +29,7 @@ public class SearchControls {
 
     private final Button buttonSearchDown;
 
-    public SearchControls(
-        final ToolBar barSearch, final CustomTextField fieldSearch, final Label labelMatches,
-        final Button buttonCloseSearch, final Button buttonSearchUp, final Button buttonSearchDown) {
+    public SearchControls(final ToolBar barSearch, final CustomTextField fieldSearch, final Label labelMatches, final Button buttonCloseSearch, final Button buttonSearchUp, final Button buttonSearchDown) {
         this.barSearch = barSearch;
         this.fieldSearch = fieldSearch;
         this.labelMatches = labelMatches;
@@ -41,47 +39,42 @@ public class SearchControls {
     }
 
     public StringProperty searchFieldTextProperty() {
-        return fieldSearch.textProperty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void bindMatchText(final ObservableValue<String> text) {
-        labelMatches.textProperty().bind(text);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setupButtons(final EventHandler<ActionEvent> actionClose, final EventHandler<ActionEvent> actionUp, final EventHandler<ActionEvent> actionDown) {
-        buttonCloseSearch.setOnAction(actionClose);
-        buttonSearchUp.setOnAction(actionUp);
-        buttonSearchDown.setOnAction(actionDown);
-        buttonSearchUp.setDisable(true);
-        buttonSearchDown.setDisable(true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setButtonUpDisabled(final boolean isDisabled) {
-        buttonSearchUp.setDisable(isDisabled);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setButtonDownDisabled(final boolean isDisabled) {
-        buttonSearchDown.setDisable(isDisabled);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void selectSearchField() {
-        fieldSearch.requestFocus();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void clearSearchField() {
-        fieldSearch.setText("");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setSearchFailStatus(final boolean isFail) {
-        ErrorClassTool.updateClass(fieldSearch, isFail);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setKeyPressHandler(final EventHandler<KeyEvent> keyPressHandler) {
-        fieldSearch.setOnKeyPressed(keyPressHandler);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void bindSearchOpenProperty(final Property<Boolean> searchOpenProperty) {
-        barSearch.visibleProperty().bindBidirectional(searchOpenProperty);
-        barSearch.managedProperty().bindBidirectional(searchOpenProperty);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

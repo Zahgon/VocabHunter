@@ -1,13 +1,13 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.grid;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public final class GridColumn {
+
     private final int acceptedCount;
 
     public GridColumn(final int acceptedCount) {
@@ -15,30 +15,16 @@ public final class GridColumn {
     }
 
     public int getAcceptedCount() {
-        return acceptedCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        GridColumn that = (GridColumn) o;
-
-        return new EqualsBuilder()
-            .append(acceptedCount, that.acceptedCount)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(acceptedCount)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

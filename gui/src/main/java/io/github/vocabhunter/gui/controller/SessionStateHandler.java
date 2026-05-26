@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.core.VocabHunterException;
@@ -21,11 +20,11 @@ import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
-
 import java.util.Optional;
 
 @Singleton
 public class SessionStateHandler {
+
     @Inject
     private I18nManager i18nManager;
 
@@ -46,39 +45,24 @@ public class SessionStateHandler {
     private SessionActions sessionActions;
 
     public void initialise(final BorderPane mainBorderPane) {
-        this.mainBorderPane = mainBorderPane;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SessionState getSessionState() {
-        return model.getSessionState().orElseThrow(() -> new VocabHunterException("No session state available"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SessionModel addSession(final SessionState state) {
-        SessionViewTool viewTool = new SessionViewTool(i18nManager);
-        SessionModelTool sessionTool = new SessionModelTool(state, model.getFilterSettings(), viewTool.selectedProperty(), settingsManager.getWindowSettings().orElseGet(WindowSettings::new));
-        SessionModel sessionModel = sessionTool.buildModel();
-        ControllerAndView<SessionController, Node> cav = fxmlHandler.loadControllerAndView(ViewFxml.SESSION);
-        SessionController controller = cav.getController();
-
-        controller.initialise(guiTaskHandler, sessionModel);
-        viewTool.setTabContent(SessionTab.ANALYSIS, cav.getView());
-        viewTool.setTabContent(SessionTab.PROGRESS, progressView(sessionModel));
-        mainBorderPane.setCenter(viewTool.getView());
-
-        sessionActions = controller.getSessionActions();
-
-        return sessionModel;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Node progressView(final SessionModel sessionModel) {
         ControllerAndView<ProgressController, Node> cav = fxmlHandler.loadControllerAndView(ViewFxml.PROGRESS);
-
         cav.getController().initialise(sessionModel.getProgress());
-
         return cav.getView();
     }
 
     public Optional<SessionActions> getSessionActions() {
-        return Optional.ofNullable(sessionActions);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

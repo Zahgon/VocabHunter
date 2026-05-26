@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.services;
 
 import io.github.vocabhunter.gui.common.Placement;
@@ -13,29 +12,15 @@ import org.apache.commons.lang3.SystemUtils;
 
 @Singleton
 public class EnvironmentManagerImpl implements EnvironmentManager {
+
     @Override
     public Placement getScreenSize() {
-        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-
-        return new Placement(visualBounds.getWidth(), visualBounds.getHeight());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean isVisible(final Placement placement) {
-        ObservableList<Screen> screens = Screen.getScreensForRectangle(rectangle(placement));
-
-        if (screens.size() == 1) {
-            Screen screen = screens.get(0);
-            Rectangle2D bounds = screen.getVisualBounds();
-
-            if (placement.positioned()) {
-                return bounds.contains(placement.x(), placement.y(), placement.width(), placement.height());
-            } else {
-                return bounds.getWidth() >= placement.width() && bounds.getHeight() >= placement.height();
-            }
-        } else {
-            return false;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Rectangle2D rectangle(final Placement placement) {
@@ -48,11 +33,11 @@ public class EnvironmentManagerImpl implements EnvironmentManager {
 
     @Override
     public boolean useSystemMenuBar() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean isExitOptionShown() {
-        return !SystemUtils.IS_OS_MAC_OSX;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

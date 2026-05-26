@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.view;
 
 import io.github.vocabhunter.analysis.marked.WordState;
@@ -9,6 +8,7 @@ import javafx.css.PseudoClass;
 import javafx.scene.Node;
 
 public final class StateClassTool {
+
     private static final PseudoClass CLASS_UNSEEN = PseudoClass.getPseudoClass("unseen");
 
     private static final PseudoClass CLASS_KNOWN = PseudoClass.getPseudoClass("known");
@@ -22,34 +22,26 @@ public final class StateClassTool {
     }
 
     public static void clearStateClasses(final Node node) {
-        updateStateClasses(node, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void updateStateClasses(final Node node, final WordState state) {
-        node.pseudoClassStateChanged(CLASS_UNSEEN, state == WordState.UNSEEN);
-        node.pseudoClassStateChanged(CLASS_KNOWN, state == WordState.KNOWN);
-        node.pseudoClassStateChanged(CLASS_UNKNOWN, state == WordState.UNKNOWN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void clearExtendedStateClasses(final Node node) {
-        clearStateClasses(node);
-        clearExcludedClass(node);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void updateExtendedStateClasses(final Node node, final WordState state, final boolean isExcluded) {
-        if (isExcluded) {
-            clearStateClasses(node);
-        } else {
-            updateStateClasses(node, state);
-        }
-        updatedExcludedClass(node, isExcluded);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void updatedExcludedClass(final Node node, final boolean isExcluded) {
-        node.pseudoClassStateChanged(CLASS_EXCLUDED, isExcluded);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void clearExcludedClass(final Node node) {
-        updatedExcludedClass(node, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

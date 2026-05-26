@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.common;
 
 import io.github.vocabhunter.gui.i18n.I18nKey;
@@ -11,6 +10,7 @@ import jakarta.inject.Singleton;
 
 @Singleton
 public class ColumnNameTool {
+
     private static final int ALPHABET_LENGTH = 26;
 
     private final I18nManager i18nManager;
@@ -21,12 +21,11 @@ public class ColumnNameTool {
     }
 
     public String columnName(final int index) {
-        return i18nManager.text(I18nKey.FILTER_COLUMN, letters(index));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private String letters(final int index) {
         char c = (char) ('A' + (index % ALPHABET_LENGTH));
-
         if (index / ALPHABET_LENGTH == 0) {
             return Character.toString(c);
         } else {

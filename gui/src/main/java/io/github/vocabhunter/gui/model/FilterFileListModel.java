@@ -1,15 +1,14 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.util.List;
 
 public class FilterFileListModel {
+
     private final ObservableList<FilterFileModel> files;
 
     public FilterFileListModel(final List<FilterFileModel> files) {
@@ -18,18 +17,18 @@ public class FilterFileListModel {
     }
 
     public ObservableList<FilterFileModel> getFiles() {
-        return files;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void removeIfExists(final FilterFileModel fileModel) {
-        files.removeIf(f -> f != fileModel && f.getFile().equals(fileModel.getFile()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void addFile(final FilterFileModel fileModel) {
-        files.add(fileModel);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void remove(final FilterFileModel file) {
-        files.remove(file);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

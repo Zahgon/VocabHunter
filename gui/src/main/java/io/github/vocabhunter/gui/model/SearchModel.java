@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.gui.common.SequencedWord;
@@ -11,6 +10,7 @@ import javafx.beans.property.*;
 import javafx.collections.ObservableList;
 
 public class SearchModel<T extends SequencedWord> {
+
     private final StringProperty searchField;
 
     private final ObjectProperty<T> currentWord;
@@ -38,13 +38,11 @@ public class SearchModel<T extends SequencedWord> {
     }
 
     public void resetValues() {
-        updateValues(new SearchResult<>());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void updateValues(final Searcher<T> searcher) {
-        SearchResult<T> result = searcher.buildResult(wordList, currentWord.get(), searchField.get());
-
-        updateValues(result);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void updateValues(final SearchResult<T> result) {
@@ -58,30 +56,30 @@ public class SearchModel<T extends SequencedWord> {
     }
 
     public StringProperty matchDescriptionProperty() {
-        return matchDescription;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObjectProperty<T> previousMatchProperty() {
-        return previousMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObjectProperty<T> nextMatchProperty() {
-        return nextMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObjectProperty<T> wrapMatchProperty() {
-        return wrapMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public BooleanProperty previousButtonDisabledProperty() {
-        return previousButtonDisabled;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public BooleanProperty nextButtonDisabledProperty() {
-        return nextButtonDisabled;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public BooleanProperty searchFailProperty() {
-        return searchFail;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.i18n.I18nKey;
@@ -21,11 +20,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.controlsfx.control.StatusBar;
-
 import static javafx.beans.binding.Bindings.not;
 
 @Singleton
 public class MainController {
+
     @FXML
     private MenuItem menuNew;
 
@@ -147,55 +146,7 @@ public class MainController {
     private LanguageHandler languageHandler;
 
     public void initialise(final Stage stage) {
-        sessionStateHandler.initialise(mainBorderPane);
-        languageHandler.setupControl(menuLanguage);
-
-        buildToggleGroup(buttonEditOn, buttonEditOff);
-        buildToggleGroup(menuEditOn, menuEditOff);
-
-        handler(buttonOpen, menuOpen, guiFileHandler::handleOpenSession);
-        handler(buttonNew, menuNew, guiFileHandler::handleNewSession);
-        handler(buttonSave, menuSave, guiFileHandler::handleSave);
-        handler(menuSaveAs, guiFileHandler::handleSaveAs);
-        handler(buttonExport, menuExportWithNotes, guiFileHandler::handleExportWithNotes);
-        handler(menuExportWithoutNotes, guiFileHandler::handleExportWithoutNotes);
-
-        buttonEditOn.disableProperty().bind(not(model.sessionOpenProperty()));
-        menuEditOn.disableProperty().bind(not(model.sessionOpenProperty()));
-        buttonEditOff.disableProperty().bind(not(model.selectionAvailableProperty()));
-        menuEditOff.disableProperty().bind(not(model.selectionAvailableProperty()));
-
-        buttonEditOn.selectedProperty().bindBidirectional(model.editModeProperty());
-        menuEditOn.selectedProperty().bindBidirectional(model.editModeProperty());
-        menuEditOff.selectedProperty().bindBidirectional(buttonEditOff.selectedProperty());
-
-        buttonSave.disableProperty().bind(not(model.sessionOpenProperty()));
-        menuSave.disableProperty().bind(not(model.sessionOpenProperty()));
-        menuSaveAs.disableProperty().bind(not(model.sessionOpenProperty()));
-        buttonExport.disableProperty().bind(not(model.selectionAvailableProperty()));
-        menuExportWithNotes.disableProperty().bind(not(model.selectionAvailableProperty()));
-        menuExportWithoutNotes.disableProperty().bind(not(model.selectionAvailableProperty()));
-
-        handler(buttonSetupFilters, menuSetupFilters, this::processSetupFilters);
-
-        menuWebsite.setOnAction(e -> webPageTool.showWebPage(I18nKey.LINK_MAIN));
-        menuHowTo.setOnAction(e -> webPageTool.showWebPage(I18nKey.LINK_HELP));
-        menuIssue.setOnAction(e -> webPageTool.showWebPage(I18nKey.LINK_ISSUE));
-        menuAbout.setOnAction(e -> processAbout());
-
-        prepareFilterEnable();
-        prepareStatusInformation();
-
-        menuBar.setUseSystemMenuBar(environmentManager.useSystemMenuBar());
-
-        menuCopy.setOnAction(e -> copyWord());
-        menuCopy.disableProperty().bind(not(model.sessionOpenProperty()));
-
-        menuFind.setOnAction(e -> openFind());
-        menuFind.disableProperty().bind(not(model.sessionOpenProperty()));
-
-        menuExit.setOnAction(e -> stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST)));
-        menuExit.setVisible(environmentManager.isExitOptionShown());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void prepareFilterEnable() {
@@ -207,7 +158,6 @@ public class MainController {
         statusBar.textProperty().bind(statusModel.textProperty());
         statusBar.progressProperty().bind(statusModel.activityProperty());
         statusBar.getRightItems().add(MiniGraphTool.miniGraph(statusModel));
-
         maskerPane.visibleProperty().bind(statusModel.busyProperty());
     }
 
@@ -217,14 +167,12 @@ public class MainController {
 
     private void handler(final Button button, final MenuItem menuItem, final Runnable action) {
         EventHandler<ActionEvent> handler = e -> action.run();
-
         button.setOnAction(handler);
         menuItem.setOnAction(handler);
     }
 
     private void buildToggleGroup(final Toggle editOn, final Toggle editOff) {
         ToggleGroup editGroup = new ToggleGroup();
-
         editOn.setToggleGroup(editGroup);
         editOff.setToggleGroup(editGroup);
     }
@@ -245,14 +193,10 @@ public class MainController {
     }
 
     private void openFind() {
-        sessionStateHandler.getSessionActions()
-            .map(SessionActions::getOpenSearchAction)
-            .ifPresent(Runnable::run);
+        sessionStateHandler.getSessionActions().map(SessionActions::getOpenSearchAction).ifPresent(Runnable::run);
     }
 
     private void copyWord() {
-        sessionStateHandler.getSessionActions()
-            .map(SessionActions::getCopyWordAction)
-            .ifPresent(Runnable::run);
+        sessionStateHandler.getSessionActions().map(SessionActions::getCopyWordAction).ifPresent(Runnable::run);
     }
 }

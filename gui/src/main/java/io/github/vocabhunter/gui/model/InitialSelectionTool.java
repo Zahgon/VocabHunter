@@ -1,32 +1,20 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.core.VocabHunterException;
 import io.github.vocabhunter.analysis.marked.WordState;
-
 import java.util.List;
 
 public final class InitialSelectionTool {
+
     private InitialSelectionTool() {
         // Prevent instantiation - all methods are static
     }
 
     public static WordModel nextWord(final List<WordModel> words) {
-        if (words == null || words.isEmpty()) {
-            throw new VocabHunterException("Empty word list");
-        } else {
-            int lastSeen = getLastSeenIndex(words);
-            int result = lastSeen + 1;
-
-            if (result == words.size()) {
-                --result;
-            }
-
-            return words.get(result);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static int getLastSeenIndex(final List<WordModel> words) {
@@ -35,7 +23,6 @@ public final class InitialSelectionTool {
                 return i;
             }
         }
-
         return -1;
     }
 

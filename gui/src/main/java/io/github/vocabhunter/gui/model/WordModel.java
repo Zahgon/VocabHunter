@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.marked.MarkedWord;
@@ -11,12 +10,11 @@ import javafx.beans.Observable;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.util.Callback;
-
 import java.util.List;
 
 public class WordModel implements MarkedWord, SequencedWord {
-    public static final Callback<WordModel, Observable[]> PROPERTY_EXTRACTOR
-            = w -> new Observable[] {w.identifier, w.state};
+
+    public static final Callback<WordModel, Observable[]> PROPERTY_EXTRACTOR = w -> new Observable[] { w.identifier, w.state };
 
     private final int sequenceNo;
 
@@ -41,45 +39,45 @@ public class WordModel implements MarkedWord, SequencedWord {
 
     @Override
     public int getSequenceNo() {
-        return sequenceNo;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getWordIdentifier() {
-        return identifier.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public WordState getState() {
-        return state.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setState(final WordState state) {
-        this.state.set(state);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleObjectProperty<WordState> stateProperty() {
-        return state;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<Integer> getLineNos() {
-        return lineNos;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int getUseCount() {
-        return useCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleStringProperty noteProperty() {
-        return note;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getNote() {
-        return note.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setNote(final String note) {
-        this.note.set(note);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

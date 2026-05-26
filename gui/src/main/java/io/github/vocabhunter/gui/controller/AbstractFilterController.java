@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.dialogues.FileDialogueFactory;
@@ -14,10 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import static io.github.vocabhunter.gui.i18n.I18nKey.FILTER_WORDS_COUNT;
 
 public abstract class AbstractFilterController<T extends AbstractFilterModel> {
+
     private final I18nManager i18nManager;
 
     private final FileDialogueFactory factory;
@@ -43,22 +42,7 @@ public abstract class AbstractFilterController<T extends AbstractFilterModel> {
     }
 
     public void initialise(final Stage stage, final FilterFileModel parentModel, final Runnable onSave) {
-        T model = buildFilterModel(parentModel);
-
-        fieldFile.textProperty().bind(model.filenameProperty());
-
-        buttonChangeFile.setOnAction(e -> changeFile(stage, factory, model));
-        buttonAddFilterFile.setOnAction(e -> exit(stage, model, onSave, parentModel, true));
-        buttonCancel.setOnAction(e -> exit(stage, model, onSave, parentModel, false));
-
-        labelTotalWords.textProperty().bind(i18nManager.textBinding(FILTER_WORDS_COUNT, model.wordCountProperty()));
-
-        buttonAddFilterFile.disableProperty().bind(model.errorProperty());
-
-        ErrorClassTool.updateClass(labelTotalWords, model.isError());
-        model.errorProperty().addListener((o, n, v) -> ErrorClassTool.updateClass(labelTotalWords, v));
-
-        initialiseInternal(parentModel, model);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     protected abstract void changeFile(Stage stage, FileDialogueFactory factory, T filterModel);

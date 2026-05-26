@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.session.EnrichedSessionState;
@@ -19,11 +18,11 @@ import jakarta.inject.Singleton;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.nio.file.Path;
 
 @Singleton
 public class GuiFileHandler {
+
     private static final Logger LOG = LoggerFactory.getLogger(GuiFileHandler.class);
 
     private Stage stage;
@@ -50,15 +49,15 @@ public class GuiFileHandler {
     private DialogueTool dialogueTool;
 
     public void initialise(final Stage stage) {
-        this.stage = stage;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void handleExportWithNotes() {
-        handleExport(true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void handleExportWithoutNotes() {
-        handleExport(false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void handleExport(final boolean isNoteIncluded) {
@@ -69,21 +68,13 @@ public class GuiFileHandler {
 
     private void processExport(final boolean isNoteIncluded) {
         Path file = chooseFile(FileDialogueType.EXPORT_SELECTION);
-
         if (file == null) {
             statusManager.completeAction();
         } else {
             statusManager.performAction(file);
-
             Path fileWithSuffix = FileNameTool.ensureExportFileHasSuffix(file);
             SessionState sessionState = sessionStateHandler.getSessionState();
-            GuiTask<Boolean> task = new GuiTask<>(
-                guiTaskHandler,
-                statusManager,
-                () -> processExport(fileWithSuffix, sessionState, isNoteIncluded),
-                e -> dialogueTool.errorOnExport(fileWithSuffix, e)
-            );
-
+            GuiTask<Boolean> task = new GuiTask<>(guiTaskHandler, statusManager, () -> processExport(fileWithSuffix, sessionState, isNoteIncluded), e -> dialogueTool.errorOnExport(fileWithSuffix, e));
             guiTaskHandler.executeInBackground(task);
         }
     }
@@ -91,27 +82,17 @@ public class GuiFileHandler {
     private boolean processExport(final Path file, final SessionState sessionState, final boolean isNoteIncluded) {
         LOG.info("Exporting to file '{}' (Notes included: {})", file, isNoteIncluded);
         sessionFileService.exportSelection(sessionState, file, isNoteIncluded);
-
         return true;
     }
 
     public void processOpenOrNew(final Path file) {
-        if (statusManager.beginOpenSession()) {
-            guiTaskHandler.pauseThenExecuteOnGuiThread(() -> processOpenOrNewInternal(file));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void processOpenOrNewInternal(final Path file) {
         if (unsavedChangesCheck()) {
             LOG.info("Opening file '{}'", file);
-
-            GuiTask<EnrichedSessionState> task = new GuiTask<>(
-                guiTaskHandler,
-                statusManager,
-                () -> sessionFileService.createOrOpenSession(file),
-                this::finishOpen,
-                e -> dialogueTool.errorOnOpen(file, e));
-
+            GuiTask<EnrichedSessionState> task = new GuiTask<>(guiTaskHandler, statusManager, () -> sessionFileService.createOrOpenSession(file), this::finishOpen, e -> dialogueTool.errorOnOpen(file, e));
             guiTaskHandler.executeInBackground(task);
         } else {
             statusManager.completeAction();
@@ -119,53 +100,33 @@ public class GuiFileHandler {
     }
 
     public void handleOpenSession() {
-        if (statusManager.beginOpenSession()) {
-            guiTaskHandler.pauseThenExecuteOnGuiThread(this::processOpenSession);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void processOpenSession() {
         Path file = checkUnsavedChangesAndChooseFile(FileDialogueType.OPEN_SESSION);
-
         if (file == null) {
             statusManager.completeAction();
         } else {
             statusManager.performAction(file);
             LOG.info("Opening session file '{}'", file);
-
-            GuiTask<EnrichedSessionState> task = new GuiTask<>(
-                guiTaskHandler,
-                statusManager,
-                () -> sessionFileService.read(file),
-                this::finishOpen,
-                e -> dialogueTool.errorOnOpen(file, e));
-
+            GuiTask<EnrichedSessionState> task = new GuiTask<>(guiTaskHandler, statusManager, () -> sessionFileService.read(file), this::finishOpen, e -> dialogueTool.errorOnOpen(file, e));
             guiTaskHandler.executeInBackground(task);
         }
     }
 
     public void handleNewSession() {
-        if (statusManager.beginNewSession()) {
-            guiTaskHandler.pauseThenExecuteOnGuiThread(this::processNewSession);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void processNewSession() {
         Path file = checkUnsavedChangesAndChooseFile(FileDialogueType.NEW_SESSION);
-
         if (file == null) {
             statusManager.completeAction();
         } else {
             statusManager.performAction(file);
             LOG.info("New session from '{}'", file);
-
-            GuiTask<EnrichedSessionState> task = new GuiTask<>(
-                guiTaskHandler,
-                statusManager,
-                () -> sessionFileService.createNewSession(file),
-                this::finishOpen,
-                e -> dialogueTool.errorOnOpen(file, e));
-
+            GuiTask<EnrichedSessionState> task = new GuiTask<>(guiTaskHandler, statusManager, () -> sessionFileService.createNewSession(file), this::finishOpen, e -> dialogueTool.errorOnOpen(file, e));
             guiTaskHandler.executeInBackground(task);
         }
     }
@@ -173,30 +134,20 @@ public class GuiFileHandler {
     private void finishOpen(final EnrichedSessionState enrichedState) {
         SessionState state = enrichedState.getState();
         SessionModel sessionModel = sessionStateHandler.addSession(state);
-
         model.replaceSessionModel(state, sessionModel, enrichedState.getFile().orElse(null));
         statusManager.replaceSession(sessionModel.getPosition(), sessionModel.getProgress());
     }
 
     public void handleSave() {
-        if (model.hasSessionFile()) {
-            if (statusManager.beginSaveSession()) {
-                guiTaskHandler.pauseThenExecuteOnGuiThread(this::processSave);
-            }
-        } else {
-            handleSaveAs();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void handleSaveAs() {
-        if (statusManager.beginSaveSession()) {
-            guiTaskHandler.pauseThenExecuteOnGuiThread(this::processSaveAs);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void processSaveAs() {
         Path file = chooseFile(FileDialogueType.SAVE_SESSION);
-
         if (file == null) {
             statusManager.completeAction();
         } else {
@@ -208,25 +159,15 @@ public class GuiFileHandler {
 
     private void processSave() {
         Path file = model.getSessionFile();
-
         statusManager.performAction(file);
         LOG.info("Saving file '{}'", file);
-
         SessionState sessionState = sessionStateHandler.getSessionState();
-        GuiTask<Boolean> task = new GuiTask<>(
-            guiTaskHandler,
-            statusManager,
-            () -> saveFile(file, sessionState),
-            b -> model.setChangesSaved(true),
-            e -> dialogueTool.errorOnSave(file, e)
-        );
-
+        GuiTask<Boolean> task = new GuiTask<>(guiTaskHandler, statusManager, () -> saveFile(file, sessionState), b -> model.setChangesSaved(true), e -> dialogueTool.errorOnSave(file, e));
         guiTaskHandler.executeInBackground(task);
     }
 
     private boolean saveFile(final Path file, final SessionState sessionState) {
         sessionFileService.write(file, sessionState);
-
         return true;
     }
 
@@ -240,7 +181,6 @@ public class GuiFileHandler {
 
     private Path chooseFile(final FileDialogueType type) {
         FileDialogue dialogue = fileDialogueFactory.create(type, stage);
-
         dialogue.showChooser();
         if (dialogue.isFileSelected()) {
             return dialogue.getSelectedFile();
@@ -250,25 +190,12 @@ public class GuiFileHandler {
     }
 
     public boolean unsavedChangesCheck() {
-        if (model.isChangesSaved()) {
-            return true;
-        } else {
-            UnsavedChangesDialogue dialogue = dialogueTool.unsavedChangesDialogue(model.getSessionFile());
-
-            dialogue.showDialogue();
-
-            return switch (dialogue.getUserResponse()) {
-                case SAVE -> saveChanges();
-                case DISCARD -> true;
-                case CANCEL -> false;
-            };
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private boolean saveChanges() {
         if (model.hasSessionFile()) {
             saveChangesInternal();
-
             return true;
         } else {
             return saveChangesAs();
@@ -277,30 +204,24 @@ public class GuiFileHandler {
 
     private boolean saveChangesAs() {
         Path file = chooseFile(FileDialogueType.SAVE_SESSION);
-
         if (file == null) {
             return false;
         } else {
             file = FileNameTool.ensureSessionFileHasSuffix(file);
-
             model.setSessionFile(file);
-
             return saveChangesInternal();
         }
     }
 
     private boolean saveChangesInternal() {
         Path file = model.getSessionFile();
-
         try {
             LOG.info("Saving file '{}'", file);
             sessionFileService.write(file, sessionStateHandler.getSessionState());
             model.setChangesSaved(true);
-
             return true;
         } catch (final RuntimeException e) {
             dialogueTool.errorOnSave(file, e);
-
             return false;
         }
     }

@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.marked.MarkTool;
@@ -11,13 +10,13 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
 public final class SessionModel {
+
     private static final Comparator<WordModel> WORD_COMPARATOR = Comparator.comparing(WordModel::getSequenceNo);
 
     private final List<String> lines;
@@ -26,7 +25,7 @@ public final class SessionModel {
 
     private final ObservableSet<WordModel> selectedWords = FXCollections.observableSet(new TreeSet<>(WORD_COMPARATOR));
 
-    private final ObservableList<WordModel> wordList =  FXCollections.observableArrayList(WordModel.PROPERTY_EXTRACTOR);
+    private final ObservableList<WordModel> wordList = FXCollections.observableArrayList(WordModel.PROPERTY_EXTRACTOR);
 
     private final ObservableList<String> useList = FXCollections.observableArrayList();
 
@@ -54,173 +53,153 @@ public final class SessionModel {
 
     private final DoubleProperty splitWordPosition;
 
-    public SessionModel(
-        final String documentName, final List<String> lines, final List<WordModel> words, final FilterSettings filterSettings,
-        final ProgressModel progress, final PositionModel position, final WindowSettings windowSettings) {
+    public SessionModel(final String documentName, final List<String> lines, final List<WordModel> words, final FilterSettings filterSettings, final ProgressModel progress, final PositionModel position, final WindowSettings windowSettings) {
         this.lines = new ArrayList<>(lines);
         this.documentName = new SimpleStringProperty(documentName);
         this.filterSettings = new SimpleObjectProperty<>(filterSettings);
         this.progress = progress;
         this.position = position;
         allWords = List.copyOf(words);
-        selectedWords.addAll(words.stream()
-            .filter(w -> w.getState().equals(WordState.UNKNOWN))
-            .toList());
-
+        selectedWords.addAll(words.stream().filter(w -> w.getState().equals(WordState.UNKNOWN)).toList());
         updateWordList(true, new MarkTool<>(words));
         currentWord = new SimpleObjectProperty<>(InitialSelectionTool.nextWord(allWords));
-
         splitUsePosition = new SimpleDoubleProperty(windowSettings.getSplitUsePosition());
         splitWordPosition = new SimpleDoubleProperty(windowSettings.getSplitWordPosition());
     }
 
     public void addSelectedWord(final WordModel word) {
-        selectedWords.add(word);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void removeDeselectedWord(final WordModel word) {
-        selectedWords.remove(word);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void processWordUpdate(final WordModel word) {
-        List<String> uses = word.getLineNos().stream()
-            .map(lines::get)
-            .toList();
-
-        useList.clear();
-        useList.addAll(uses);
-        useCount.set(word.getUseCount());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void updateWordList(final boolean isEditable, final MarkTool<WordModel> markTool) {
-        wordList.clear();
-        if (isEditable) {
-            wordList.addAll(markTool.getShownWords());
-            progress.updateProgress(markTool.getKnown(), markTool.getUnknown(), markTool.getUnseenUnfiltered(), markTool.getUnseenFiltered());
-        } else {
-            wordList.addAll(selectedWords);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObservableSet<WordModel> getSelectedWords() {
-        return selectedWords;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isSelected(final int index) {
-        WordModel word = allWords.get(index);
-
-        return selectedWords.contains(word);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public WordModel getWord(final int index) {
-        return allWords.get(index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleObjectProperty<WordModel> currentWordProperty() {
-        return currentWord;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleIntegerProperty useCountProperty() {
-        return useCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty editableProperty() {
-        return editable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty searchOpenProperty() {
-        return searchOpen;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setSearchOpen(final boolean isSearchOpen) {
-        searchOpen.set(isSearchOpen);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isSearchOpen() {
-        return searchOpen.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isEditable() {
-        return editable.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public WordModel getCurrentWord() {
-        return currentWord.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObservableList<WordModel> getWordList() {
-        return wordList;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getWordListSize() {
-        return wordList.size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<WordModel> getAllWords() {
-        return allWords;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getAllWordsSize() {
-        return allWords.size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObservableList<String> getUseList() {
-        return useList;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleStringProperty documentNameProperty() {
-        return documentName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty changesSavedProperty() {
-        return changesSaved;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setChangesSaved(final boolean changesSaved) {
-        this.changesSaved.set(changesSaved);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleObjectProperty<FilterSettings> filterSettingsProperty() {
-        return filterSettings;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterSettings getFilterSettings() {
-        return filterSettings.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleBooleanProperty enableFiltersProperty() {
-        return enableFilters;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setEnableFilters(final boolean enableFilters) {
-        this.enableFilters.set(enableFilters);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isEnableFilters() {
-        return enableFilters.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ProgressModel getProgress() {
-        return progress;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public PositionModel getPosition() {
-        return position;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public DoubleProperty splitUsePositionProperty() {
-        return splitUsePosition;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public double getSplitUsePosition() {
-        return splitUsePosition.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public DoubleProperty splitWordPositionProperty() {
-        return splitWordPosition;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public double getSplitWordPosition() {
-        return splitWordPosition.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

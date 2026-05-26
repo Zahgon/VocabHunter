@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.common.ControllerAndView;
@@ -14,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 public class BaseFilterHandler<T extends AbstractFilterController<?>> {
+
     private final FxmlHandler fxmlHandler;
 
     private final DialogueTool dialogueTool;
@@ -30,16 +30,6 @@ public class BaseFilterHandler<T extends AbstractFilterController<?>> {
     }
 
     public void show(final FilterFileModel model, final Runnable onSave) {
-        Stage stage = new Stage();
-        ControllerAndView<T, Parent> cav = fxmlHandler.loadControllerAndView(viewFxml);
-        Parent root = cav.getView();
-        T controller = cav.getController();
-
-        try {
-            controller.initialise(stage, model, onSave);
-            dialogueTool.setupModal(stage, root, windowTitleKey);
-        } catch (final RuntimeException e) {
-            dialogueTool.errorOnOpen(model.getFile(), e);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

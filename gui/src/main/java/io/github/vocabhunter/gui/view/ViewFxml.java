@@ -1,10 +1,10 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.view;
 
 public enum ViewFxml {
+
     MAIN("main.fxml"),
     SESSION("session.fxml"),
     PROGRESS("progress.fxml"),
@@ -22,6 +22,6 @@ public enum ViewFxml {
     }
 
     public String getName() {
-        return name;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

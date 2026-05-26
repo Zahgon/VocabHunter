@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.i18n.I18nKey;
@@ -15,10 +14,10 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
-
 import static io.github.vocabhunter.gui.i18n.I18nKey.*;
 
 public class ProgressController {
+
     @FXML
     private PieChart chartProgress;
 
@@ -69,18 +68,13 @@ public class ProgressController {
     }
 
     public void initialise(final ProgressModel model) {
-        buildChartResults(model);
-        buildChartProgress(model);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void buildChartProgress(final ProgressModel model) {
         Data done = slice(PROGRESS_SLICE_MARKED, model.markedProperty());
         Data remaining = slice(PROGRESS_SLICE_UNMARKED, model.unseenUnfilteredProperty());
-
-        chartProgress.setData(FXCollections.observableArrayList(
-            done, remaining
-        ));
-
+        chartProgress.setData(FXCollections.observableArrayList(done, remaining));
         bindValueLabel(labelValueDone, model.markedProperty());
         bindPercentLabel(labelPercentDone, model.markedPercentVisibleProperty());
         bindValueLabel(labelValueRemaining, model.unseenUnfilteredProperty());
@@ -92,11 +86,7 @@ public class ProgressController {
         Data unknown = slice(PROGRESS_SLICE_UNKNOWN, model.unknownProperty());
         Data unmarked = slice(PROGRESS_SLICE_UNMARKED, model.unseenUnfilteredProperty());
         Data filtered = slice(PROGRESS_SLICE_FILTERED, model.unseenFilteredProperty());
-
-        chartResults.setData(FXCollections.observableArrayList(
-            known, unknown, unmarked, filtered
-        ));
-
+        chartResults.setData(FXCollections.observableArrayList(known, unknown, unmarked, filtered));
         bindValueLabel(labelValueKnown, model.knownProperty());
         bindPercentLabel(labelPercentKnown, model.knownPercentProperty());
         bindValueLabel(labelValueUnknown, model.unknownProperty());
@@ -110,15 +100,12 @@ public class ProgressController {
     private Data slice(final I18nKey key, final ObservableNumberValue property) {
         double value = property.getValue().intValue();
         Data slice = new Data(i18nManager.text(key), value);
-
         slice.pieValueProperty().bind(property);
-
         return slice;
     }
 
     private void bindValueLabel(final Label valueLabel, final ObservableNumberValue property) {
         StringExpression binding = i18nManager.textBinding(PROGRESS_WORD_COUNT, property);
-
         valueLabel.textProperty().bind(binding);
     }
 

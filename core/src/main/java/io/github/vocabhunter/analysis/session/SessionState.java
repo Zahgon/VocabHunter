@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.session;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,7 +9,6 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +17,7 @@ import java.util.function.Function;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SessionState {
+
     private int formatVersion = SessionFormatVersion.LATEST_VERSION;
 
     private String name;
@@ -33,76 +32,54 @@ public class SessionState {
 
     public SessionState(final AnalysisResult model) {
         this.name = model.getName();
-
-        orderedUses = model.getOrderedUses().stream()
-            .map(SessionWord::new)
-            .toList();
+        orderedUses = model.getOrderedUses().stream().map(SessionWord::new).toList();
         lines = List.copyOf(model.getLines());
     }
 
     public int getFormatVersion() {
-        return formatVersion;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFormatVersion(final int formatVersion) {
-        this.formatVersion = formatVersion;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getName() {
-        return name;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setName(final String name) {
-        this.name = name;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<SessionWord> getOrderedUses() {
-        return List.copyOf(orderedUses);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setOrderedUses(final List<SessionWord> orderedUses) {
-        this.orderedUses = List.copyOf(orderedUses);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<String> getLines() {
-        return List.copyOf(lines);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setLines(final List<String> lines) {
-        this.lines = List.copyOf(lines);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        SessionState that = (SessionState) o;
-
-        return new EqualsBuilder()
-            .append(formatVersion, that.formatVersion)
-            .append(name, that.name)
-            .append(orderedUses, that.orderedUses)
-            .append(lines, that.lines)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isEquivalent(final SessionState that) {
-        return formatVersion == that.formatVersion
-            && name.equals(that.name)
-            && isEquivalentLines(lines, that.lines)
-            && isEquivalentUses(orderedUses, that.orderedUses, this.lines, that.lines);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static boolean isEquivalentLines(final List<String> lhs, final List<String> rhs) {
         Set<String> lhsSet = new HashSet<>(lhs);
         Set<String> rhsSet = new HashSet<>(rhs);
-
         return lhsSet.equals(rhsSet);
     }
 
@@ -112,45 +89,29 @@ public class SessionState {
         }
         Iterator<SessionWord> lhsI = lhs.iterator();
         Iterator<SessionWord> rhsI = rhs.iterator();
-
         while (lhsI.hasNext()) {
             SessionWord lhsWord = lhsI.next();
             SessionWord rhsWord = rhsI.next();
-
             Function<SessionWord, List<?>> lhsF = extractor(lhsLines);
             Function<SessionWord, List<?>> rhsF = extractor(rhsLines);
-
             if (!lhsWord.isEquivalent(rhsWord, lhsF, rhsF)) {
                 return false;
             }
         }
-
         return true;
     }
 
     private static Function<SessionWord, List<?>> extractor(final List<String> lhsLines) {
-        return w -> w.getLineNos().stream()
-            .map(lhsLines::get)
-            .toList();
+        return w -> w.getLineNos().stream().map(lhsLines::get).toList();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(formatVersion)
-            .append(name)
-            .append(orderedUses)
-            .append(lines)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-            .append("formatVersion", formatVersion)
-            .append("name", name)
-            .append("orderedUses", orderedUses)
-            .append("lines", lines)
-            .toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

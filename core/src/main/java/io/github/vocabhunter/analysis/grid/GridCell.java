@@ -1,13 +1,13 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.grid;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public final class GridCell {
+
     public static final GridCell EMPTY_CELL = new GridCell("", false);
 
     private final String content;
@@ -20,54 +20,29 @@ public final class GridCell {
     }
 
     public String getContent() {
-        return content;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isEmpty() {
-        return content.isEmpty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isIncluded() {
-        return !(isRejected || isEmpty());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        GridCell gridCell = (GridCell) o;
-
-        return new EqualsBuilder()
-            .append(isRejected, gridCell.isRejected)
-            .append(content, gridCell.content)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(content)
-            .append(isRejected)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        StringBuilder buffer = new StringBuilder(content);
-
-        if (isEmpty()) {
-            buffer.append("(empty)");
-        }
-        if (isRejected) {
-            buffer.append(" (rejected)");
-        }
-
-        return buffer.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

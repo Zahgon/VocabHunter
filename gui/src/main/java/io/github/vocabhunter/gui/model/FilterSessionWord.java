@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import io.github.vocabhunter.analysis.marked.MarkedWord;
@@ -13,6 +12,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class FilterSessionWord {
+
     private final String wordIdentifier;
 
     private final WordState state;
@@ -29,48 +29,29 @@ public class FilterSessionWord {
     }
 
     public WordState getState() {
-        return state;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getWordIdentifier() {
-        return wordIdentifier;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ObservableValue<FilterSessionWord> selfProperty() {
-        return self;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        FilterSessionWord that = (FilterSessionWord) o;
-
-        return new EqualsBuilder()
-            .append(state, that.state)
-            .append(wordIdentifier, that.wordIdentifier)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(state)
-            .append(wordIdentifier)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-            .append("wordIdentifier", wordIdentifier)
-            .append("state", state)
-            .toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.grid;
 
 import io.github.vocabhunter.analysis.core.VocabHunterException;
@@ -14,7 +13,6 @@ import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
@@ -22,12 +20,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
-
 import static io.github.vocabhunter.analysis.session.FileNameTool.filename;
 import static java.util.Collections.unmodifiableMap;
 
 @Singleton
 public class FilterFileWordsExtractorImpl implements FilterFileWordsExtractor {
+
     private static final Logger LOG = LoggerFactory.getLogger(FilterFileWordsExtractorImpl.class);
 
     private static final Set<Integer> FIRST_COLUMN = Set.of(0);
@@ -49,25 +47,11 @@ public class FilterFileWordsExtractorImpl implements FilterFileWordsExtractor {
 
     @Override
     public List<String> extract(final BaseListedFile file) {
-        Function<BaseListedFile, List<String>> extractor = extractors.get(file.getClass());
-
-        if (extractor == null) {
-            throw new VocabHunterException("Unknown file type " + file);
-        } else {
-            Instant start = Instant.now();
-            List<String> result = extractor.apply(file);
-            Instant end = Instant.now();
-            Duration duration = Duration.between(start, end);
-
-            LOG.info("Read filter file and found {} words in {}ms ({})", result.size(), duration.toMillis(), filename(file.getFile()));
-
-            return result;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private List<String> extractSessionListedFile(final BaseListedFile baseListedFile) {
         SessionListedFile file = (SessionListedFile) baseListedFile;
-
         if (file.isIncludeUnknown()) {
             return sessionWordsTool.seenWords(file.getFile());
         } else {
@@ -78,24 +62,20 @@ public class FilterFileWordsExtractorImpl implements FilterFileWordsExtractor {
     private List<String> extractExcelListedFile(final BaseListedFile baseListedFile) {
         ExcelListedFile file = (ExcelListedFile) baseListedFile;
         TextGrid grid = textGridManager.readExcel(file.getFile());
-
         return gridWordsExtractor.words(grid.getLines(), file.getColumns());
     }
 
     private List<String> extractDocumentListedFile(final BaseListedFile baseListedFile) {
         DocumentListedFile file = (DocumentListedFile) baseListedFile;
         TextGrid grid = textGridManager.readDocument(file.getFile());
-
         return gridWordsExtractor.words(grid.getLines(), FIRST_COLUMN);
     }
 
     private Map<Class<?>, Function<BaseListedFile, List<String>>> buildExtractorMap() {
         Map<Class<?>, Function<BaseListedFile, List<String>>> map = new ConcurrentHashMap<>();
-
         map.put(SessionListedFile.class, this::extractSessionListedFile);
         map.put(ExcelListedFile.class, this::extractExcelListedFile);
         map.put(DocumentListedFile.class, this::extractDocumentListedFile);
-
         return unmodifiableMap(map);
     }
 }

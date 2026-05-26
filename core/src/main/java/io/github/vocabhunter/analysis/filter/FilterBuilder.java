@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.filter;
 
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import java.util.concurrent.Executor;
 import java.util.function.Supplier;
 
 public class FilterBuilder {
+
     private Executor executor;
 
     private WordFilter minimumLettersFilter;
@@ -23,51 +23,31 @@ public class FilterBuilder {
     private final List<Supplier<Collection<String>>> excludedWordsSuppliers = new ArrayList<>();
 
     public FilterBuilder executor(final Executor executor) {
-        this.executor = executor;
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterBuilder minimumLetters(final int count) {
-        minimumLettersFilter = new MinimumLettersFilter(count);
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterBuilder minimumOccurrences(final int count) {
-        minimumOccurrencesFilter = new MinimumOccurrencesFilter(count);
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterBuilder excludeInitialCapital() {
-        excludeInitialCapitalFilter = new InitialCapitalFilter();
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterBuilder addExcludedWords(final Collection<String> words) {
-        return addExcludedWordsSupplier(() -> words);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public FilterBuilder addExcludedWordsSupplier(final Supplier<Collection<String>> wordsSupplier) {
-        excludedWordsSuppliers.add(wordsSupplier);
-
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public WordFilter build() {
-        List<WordFilter> filters = new ArrayList<>();
-
-        addIfUsed(filters, minimumLettersFilter);
-        addIfUsed(filters, minimumOccurrencesFilter);
-        addIfUsed(filters, excludeInitialCapitalFilter);
-
-        if (!excludedWordsSuppliers.isEmpty()) {
-            filters.add(new ExcludedWordsFilter(getExecutor(), excludedWordsSuppliers));
-        }
-
-        return new AggregateFilter(filters);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Executor getExecutor() {

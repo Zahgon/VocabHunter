@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.main;
 
 import com.google.inject.AbstractModule;
@@ -24,11 +23,11 @@ import io.github.vocabhunter.gui.services.FilterFileModelTranslatorImpl;
 import io.github.vocabhunter.gui.status.StatusManager;
 import io.github.vocabhunter.gui.status.StatusManagerImpl;
 import jakarta.inject.Singleton;
-
 import java.nio.file.Paths;
 import java.util.List;
 
 public class CoreGuiModule extends AbstractModule {
+
     private final List<String> args;
 
     public CoreGuiModule(final String... args) {
@@ -37,32 +36,12 @@ public class CoreGuiModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(ThreadPoolTool.class).to(ThreadPoolToolImpl.class);
-        bind(TextReader.class).to(TikaTool.class);
-        bind(Analyser.class).to(SimpleAnalyser.class);
-
-        bind(DocumentGridReader.class).to(DocumentGridReaderImpl.class);
-        bind(ExcelGridReader.class).to(ExcelGridReaderImpl.class);
-        bind(SessionWordsTool.class).to(SessionWordsToolImpl.class);
-        bind(GridWordsExtractor.class).to(GridWordsExtractorImpl.class);
-        bind(TextGridBuilder.class).to(TextGridBuilderImpl.class);
-        bind(TextGridManager.class).to(TextGridManagerImpl.class);
-        bind(FilterFileWordsExtractor.class).to(FilterFileWordsExtractorImpl.class);
-        bind(I18nManager.class).to(I18nManagerImpl.class);
-
-        bind(StatusManager.class).to(StatusManagerImpl.class);
-        bind(FilterFileModelTranslator.class).to(FilterFileModelTranslatorImpl.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Provides
     @Singleton
     public ExternalEventBroker provideExternalEventBroker() {
-        ExternalEventBroker broker = new ExternalEventBrokerImpl();
-
-        if (!args.isEmpty()) {
-            broker.openFile(Paths.get(args.get(0)));
-        }
-
-        return broker;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

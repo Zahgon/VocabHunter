@@ -1,18 +1,16 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.executable.console;
 
 import com.beust.jcommander.Parameter;
-
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.util.Collections.unmodifiableList;
 
 public class VocabHunterConsoleArguments {
+
     @Parameter(names = "-input", description = "Text input file", required = true)
     private List<String> input;
 
@@ -41,74 +39,74 @@ public class VocabHunterConsoleArguments {
     private boolean isHelpRequested = false;
 
     public List<String> getInput() {
-        return unmodifiableList(input);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getMinLetters() {
-        return minLetters;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getMinOccurrences() {
-        return minOccurrences;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setInput(final List<String> input) {
-        this.input = new ArrayList<>(input);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setMinLetters(final int minLetters) {
-        this.minLetters = minLetters;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setMinOccurrences(final int minOccurrences) {
-        this.minOccurrences = minOccurrences;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isIgnoreInitialCapitals() {
-        return isIgnoreInitialCapitals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setIgnoreInitialCapitals(final boolean ignoreInitialCapitals) {
-        isIgnoreInitialCapitals = ignoreInitialCapitals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isHideUses() {
-        return isHideUses;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setHideUses(final boolean hideUses) {
-        isHideUses = hideUses;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<Path> getFilterKnown() {
-        return unmodifiableList(filterKnown);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFilterKnown(final List<Path> filterKnown) {
-        this.filterKnown = new ArrayList<>(filterKnown);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<Path> getFilterSeen() {
-        return unmodifiableList(filterSeen);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFilterSeen(final List<Path> filterSeen) {
-        this.filterSeen = new ArrayList<>(filterSeen);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isHelpRequested() {
-        return isHelpRequested;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setHelpRequested(final boolean helpRequested) {
-        isHelpRequested = helpRequested;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getOutput() {
-        return output;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setOutput(final String output) {
-        this.output = output;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

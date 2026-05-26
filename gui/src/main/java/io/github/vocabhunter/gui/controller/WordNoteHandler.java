@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.common.ControllerAndView;
@@ -20,11 +19,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
 import static io.github.vocabhunter.gui.i18n.I18nKey.NOTE_WINDOW_TITLE;
 import static javafx.beans.binding.Bindings.selectString;
 
 public class WordNoteHandler {
+
     private final FxmlHandler fxmlHandler;
 
     private final DialogueTool dialogueTool;
@@ -38,16 +37,12 @@ public class WordNoteHandler {
     }
 
     public void initialise(final Button buttonNote, final TextArea textAreaNotePreview, final SessionModel sessionModel) {
-        this.sessionModel = sessionModel;
-
-        buttonNote.setOnAction(e -> show());
-        bindProperties(textAreaNotePreview, sessionModel);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void bindProperties(final TextArea textAreaNotePreview, final SessionModel sessionModel) {
         SimpleObjectProperty<WordModel> currentWordProperty = sessionModel.currentWordProperty();
         StringBinding noteBinding = selectString(currentWordProperty, "note");
-
         textAreaNotePreview.textProperty().bind(noteBinding);
         textAreaNotePreview.visibleProperty().bind(noteBinding.isNotEmpty());
     }
@@ -57,15 +52,11 @@ public class WordNoteHandler {
         ControllerAndView<WordNoteController, Parent> cav = fxmlHandler.loadControllerAndView(ViewFxml.WORD_NOTE);
         Parent root = cav.getView();
         WordNoteController controller = cav.getController();
-
         controller.initialise(stage, sessionModel);
         dialogueTool.setupModal(stage, root, NOTE_WINDOW_TITLE);
     }
 
     public void processKeyPress(final KeyEvent event) {
-        if (EventHandlerTool.isSimpleKeyPress(event, KeyCode.N)) {
-            event.consume();
-            show();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

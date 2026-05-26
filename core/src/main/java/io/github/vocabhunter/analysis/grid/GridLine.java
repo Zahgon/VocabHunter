@@ -1,17 +1,15 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.grid;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import java.util.List;
-
 import static java.util.stream.Collectors.joining;
 
 public final class GridLine {
+
     private final List<GridCell> cells;
 
     public GridLine(final GridCell... cells) {
@@ -23,45 +21,25 @@ public final class GridLine {
     }
 
     public List<GridCell> getCells() {
-        return cells;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public GridCell getCell(final int index) {
-        if (index < cells.size()) {
-            return cells.get(index);
-        } else {
-            return GridCell.EMPTY_CELL;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        GridLine gridLine = (GridLine) o;
-
-        return new EqualsBuilder()
-            .append(cells, gridLine.cells)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(cells)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return cells.stream()
-            .map(GridCell::toString)
-            .collect(joining(","));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

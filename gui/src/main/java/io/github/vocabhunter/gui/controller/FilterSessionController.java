@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.marked.MarkedWord;
@@ -26,13 +25,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
 import java.nio.file.Path;
 import java.util.List;
 
 public class FilterSessionController extends AbstractFilterController<FilterSessionModel> {
-    private static final Callback<CellDataFeatures<FilterSessionWord, FilterSessionWord>, ObservableValue<FilterSessionWord>> WORD_SELF_FACTORY
-        = x -> x.getValue().selfProperty();
+
+    private static final Callback<CellDataFeatures<FilterSessionWord, FilterSessionWord>, ObservableValue<FilterSessionWord>> WORD_SELF_FACTORY = x -> x.getValue().selfProperty();
 
     private final I18nManager i18nManager;
 
@@ -56,45 +54,30 @@ public class FilterSessionController extends AbstractFilterController<FilterSess
     @Inject
     public FilterSessionController(final I18nManager i18nManager, final FileDialogueFactory factory, final SessionWordsTool sessionWordsTool) {
         super(i18nManager, factory);
-
         this.i18nManager = i18nManager;
         this.sessionWordsTool = sessionWordsTool;
     }
 
     @Override
     protected FilterSessionModel buildFilterModel(final FilterFileModel model) {
-        Path file = model.getFile();
-        List<? extends MarkedWord> words = sessionWordsTool.readMarkedWords(file);
-
-        return new FilterSessionModel(file, words);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void exit(final Stage stage, final FilterSessionModel filterModel, final Runnable onSave, final FilterFileModel parentModel, final boolean isSaveRequested) {
-        if (isSaveRequested) {
-            FilterFileMode mode = filterModel.isIncludeUnknown() ? FilterFileMode.SESSION_SEEN : FilterFileMode.SESSION_KNOWN;
-
-            parentModel.setMode(mode);
-            parentModel.setFile(filterModel.getFile());
-            onSave.run();
-        }
-        stage.close();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void initialiseInternal(final FilterFileModel parentModel, final FilterSessionModel filterModel) {
-        buildToggleGroup(parentModel, filterModel);
-        prepareTable(filterModel);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void buildToggleGroup(final FilterFileModel parentModel, final FilterSessionModel filterModel) {
         ToggleGroup toggleGroup = new ToggleGroup();
-
         buttonKnown.setToggleGroup(toggleGroup);
         buttonSeen.setToggleGroup(toggleGroup);
-
         boolean isIncludeUnknown = parentModel.getMode() == FilterFileMode.SESSION_SEEN;
-
         buttonKnown.setSelected(!isIncludeUnknown);
         buttonSeen.setSelected(isIncludeUnknown);
         filterModel.includeUnknownProperty().bind(buttonSeen.selectedProperty());
@@ -103,30 +86,17 @@ public class FilterSessionController extends AbstractFilterController<FilterSess
     private void prepareTable(final FilterSessionModel filterModel) {
         tableWords.setItems(filterModel.getSeenWords());
         tableWords.setSelectionModel(null);
-
         columnType.setCellValueFactory(WORD_SELF_FACTORY);
         columnType.setCellFactory(c -> new FilterSessionStateTableCell(i18nManager));
         columnType.setSortable(false);
-
         columnWord.setCellValueFactory(WORD_SELF_FACTORY);
         columnWord.setCellFactory(c -> new FilterSessionWordTableCell(filterModel.includeUnknownProperty()));
         columnWord.setSortable(false);
-
         filterModel.includeUnknownProperty().addListener((t, o, v) -> tableWords.refresh());
     }
 
     @Override
     protected void changeFile(final Stage stage, final FileDialogueFactory factory, final FilterSessionModel filterModel) {
-        FileDialogue dialogue = factory.create(FileDialogueType.OPEN_SESSION, stage);
-
-        dialogue.showChooser();
-
-        if (dialogue.isFileSelected()) {
-            Path file = dialogue.getSelectedFile();
-            List<? extends MarkedWord> words = sessionWordsTool.readMarkedWords(file);
-
-            filterModel.replaceContent(file, words);
-            buttonKnown.setSelected(true);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

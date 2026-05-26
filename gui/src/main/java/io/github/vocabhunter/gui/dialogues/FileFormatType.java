@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.dialogues;
 
 import io.github.vocabhunter.analysis.core.VocabHunterException;
@@ -9,17 +8,16 @@ import io.github.vocabhunter.analysis.session.FileNameTool;
 import io.github.vocabhunter.gui.i18n.I18nKey;
 import io.github.vocabhunter.gui.i18n.I18nManager;
 import javafx.stage.FileChooser.ExtensionFilter;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
 import static io.github.vocabhunter.gui.dialogues.FileFormatExtensions.*;
 import static io.github.vocabhunter.gui.i18n.I18nKey.*;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 
 public enum FileFormatType {
+
     ALL(FILE_TYPE_ALL, "*.*"),
     TEXT(FILE_TYPE_TEXT, "*.txt"),
     DOCUMENT(FILE_TYPE_DOCUMENT, EXTENSIONS_DOCUMENT),
@@ -38,8 +36,7 @@ public enum FileFormatType {
 
     public static final List<FileFormatType> TYPES_WORD_GRIDS = List.of(DOCUMENT, SPREADSHEET);
 
-    private static final Map<List<String>, FileFormatType> TYPES = Stream.of(FileFormatType.values())
-        .collect(toMap(FileFormatType::getExtensions, identity()));
+    private static final Map<List<String>, FileFormatType> TYPES = Stream.of(FileFormatType.values()).collect(toMap(FileFormatType::getExtensions, identity()));
 
     private final I18nKey descriptionKey;
 
@@ -59,16 +56,10 @@ public enum FileFormatType {
     }
 
     public ExtensionFilter buildFilter(final I18nManager i18nManager) {
-        return new ExtensionFilter(i18nManager.text(descriptionKey), extensions);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static FileFormatType getByFilter(final ExtensionFilter filter) {
-        FileFormatType result = TYPES.get(filter.getExtensions());
-
-        if (result == null) {
-            throw new VocabHunterException("Unknown type " + filter.getDescription());
-        } else {
-            return result;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

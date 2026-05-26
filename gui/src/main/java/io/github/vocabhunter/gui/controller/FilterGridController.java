@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.grid.GridCell;
@@ -30,7 +29,6 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +36,7 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 public class FilterGridController extends AbstractFilterController<FilterGridModel> {
+
     private static final int MAX_COLUMNS_WITHOUT_SCROLL = 3;
 
     private static final int PREFERRED_COLUMN_WIDTH = 200;
@@ -71,35 +70,22 @@ public class FilterGridController extends AbstractFilterController<FilterGridMod
 
     @Override
     protected FilterGridModel buildFilterModel(final FilterFileModel model) {
-        Path file = model.getFile();
-        FilterFileMode mode = model.getMode();
-        TextGrid grid = readGrid(file, mode);
-
-        return new FilterGridModel(file, grid, mode, model.getColumns());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void exit(final Stage stage, final FilterGridModel filterModel, final Runnable onSave, final FilterFileModel parentModel, final boolean isSaveRequested) {
-        if (isSaveRequested) {
-            parentModel.setMode(filterModel.getMode());
-            parentModel.setFile(filterModel.getFile());
-            parentModel.setColumns(filterModel.getColumns());
-            onSave.run();
-        }
-        stage.close();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void initialiseInternal(final FilterFileModel parentModel, final FilterGridModel filterModel) {
-        tableWords.setItems(filterModel.getLines());
-        tableWords.setSelectionModel(null);
-        setupColumnsAndCheckBoxes(filterModel);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private ObservableValue<GridCell> extractValue(final CellDataFeatures<GridLine, GridCell> features, final int index) {
         List<GridCell> cells = features.getValue().getCells();
         GridCell cell = getCell(cells, index);
-
         return cellCache.computeIfAbsent(cell, ReadOnlyObjectWrapper::new);
     }
 
@@ -113,20 +99,7 @@ public class FilterGridController extends AbstractFilterController<FilterGridMod
 
     @Override
     protected void changeFile(final Stage stage, final FileDialogueFactory factory, final FilterGridModel filterModel) {
-        FileDialogue dialogue = factory.create(FileDialogueType.OPEN_WORD_LIST, stage);
-
-        dialogue.showChooser();
-
-        if (dialogue.isFileSelected()) {
-            Path file = dialogue.getSelectedFile();
-            FileFormatType format = dialogue.getFileFormatType();
-            FilterFileMode mode = FileFormatTypeTool.getMode(format);
-            TextGrid grid = readGrid(file, mode);
-
-            unbindCheckboxes(filterModel);
-            filterModel.replaceContent(file, grid, mode, FilterGridModel.DEFAULT_COLUMNS);
-            setupColumnsAndCheckBoxes(filterModel);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private TextGrid readGrid(final Path file, final FilterFileMode mode) {
@@ -138,8 +111,7 @@ public class FilterGridController extends AbstractFilterController<FilterGridMod
     }
 
     private void unbindCheckboxes(final FilterGridModel filterModel) {
-        IntStream.range(0, checkBoxes.size())
-            .forEach(i -> unbindCheckbox(filterModel, i));
+        IntStream.range(0, checkBoxes.size()).forEach(i -> unbindCheckbox(filterModel, i));
     }
 
     private void unbindCheckbox(final FilterGridModel filterModel, final int column) {
@@ -159,39 +131,31 @@ public class FilterGridController extends AbstractFilterController<FilterGridMod
     }
 
     private List<CheckBox> buildAndBindCheckBoxes(final FilterGridModel filterModel) {
-        return IntStream.range(0, filterModel.getColumnCount())
-            .mapToObj(i -> buildAndBindCheckBox(filterModel, i))
-            .toList();
+        return IntStream.range(0, filterModel.getColumnCount()).mapToObj(i -> buildAndBindCheckBox(filterModel, i)).toList();
     }
 
     private CheckBox buildAndBindCheckBox(final FilterGridModel filterModel, final int columnNo) {
         String name = columnNameTool.columnName(columnNo);
         CheckBox box = new CheckBox(name);
         BooleanProperty property = getColumnSelection(filterModel, columnNo);
-
         box.selectedProperty().bindBidirectional(property);
         box.setId("checkBoxColumn" + columnNo);
         box.selectedProperty().addListener((a, b, c) -> tableWords.refresh());
-
         return box;
     }
 
     private List<TableColumn<GridLine, GridCell>> buildColumns(final FilterGridModel filterModel) {
-        return IntStream.range(0, filterModel.getColumnCount())
-            .mapToObj(i -> buildColumn(filterModel, i))
-            .toList();
+        return IntStream.range(0, filterModel.getColumnCount()).mapToObj(i -> buildColumn(filterModel, i)).toList();
     }
 
     private TableColumn<GridLine, GridCell> buildColumn(final FilterGridModel filterModel, final int index) {
         TableColumn<GridLine, GridCell> column = new TableColumn<>(columnNameTool.columnName(index));
-
         column.setSortable(false);
         column.setCellValueFactory(features -> extractValue(features, index));
         column.setCellFactory(c -> new FilterGridWordTableCell(filterModel.getColumnSelections().get(index)));
         if (isScrollableColumnList(filterModel)) {
             column.setPrefWidth(PREFERRED_COLUMN_WIDTH);
         }
-
         return column;
     }
 

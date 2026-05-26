@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.view;
 
 import io.github.vocabhunter.gui.i18n.I18nManager;
@@ -11,12 +10,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SessionViewTool {
+
     private final TabPane tabPane = new TabPane();
 
     private final Map<SessionTab, Tab> tabMap = new EnumMap<>(SessionTab.class);
@@ -27,10 +26,8 @@ public class SessionViewTool {
 
     public SessionViewTool(final I18nManager i18nManager) {
         ObservableList<Tab> tabs = tabPane.getTabs();
-
         for (SessionTab tabDescription : SessionTab.values()) {
             Tab tab = new Tab(i18nManager.text(tabDescription.getKey()));
-
             tab.setId(tabDescription.getId());
             tab.setClosable(false);
             tabs.add(tab);
@@ -45,14 +42,14 @@ public class SessionViewTool {
     }
 
     public Node getView() {
-        return tabPane;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SimpleObjectProperty<SessionTab> selectedProperty() {
-        return selected;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setTabContent(final SessionTab tabDescription, final Node content) {
-        tabMap.get(tabDescription).setContent(content);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

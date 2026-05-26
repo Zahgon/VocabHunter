@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.services;
 
 import io.github.vocabhunter.analysis.filter.WordFilter;
@@ -13,6 +12,7 @@ import jakarta.inject.Singleton;
 
 @Singleton
 public class FilterService {
+
     private static final WordFilter NOP_FILTER = w -> true;
 
     private final MainModel model;
@@ -26,17 +26,10 @@ public class FilterService {
     }
 
     public void setFilterSettings(final FilterSettings settings) {
-        if (!settings.equals(model.getFilterSettings())) {
-            model.setFilter(tool.filter(settings));
-            model.setFilterSettings(settings);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public WordFilter getFilter(final boolean isEnableFilters) {
-        if (isEnableFilters) {
-            return model.getFilter();
-        } else {
-            return NOP_FILTER;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

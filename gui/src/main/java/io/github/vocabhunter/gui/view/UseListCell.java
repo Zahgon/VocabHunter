@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.view;
 
 import io.github.vocabhunter.gui.common.WordUseTool;
@@ -21,31 +20,16 @@ public class UseListCell extends TextFieldListCell<String> {
 
     @Override
     public void updateItem(final String item, final boolean empty) {
-        super.updateItem(item, empty);
-
-        if (empty || item == null) {
-            setText(null);
-            setGraphic(null);
-        } else {
-            String word = currentWord.get().getWordIdentifier();
-
-            setGraphic(flow(word, item));
-            setText(null);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private TextFlow flow(final String word, final String use) {
-        Text[] texts = new WordUseTool(word, use)
-                .stream()
-                .map(s -> text(word, s))
-                .toArray(Text[]::new);
-
+        Text[] texts = new WordUseTool(word, use).stream().map(s -> text(word, s)).toArray(Text[]::new);
         return new TextFlow(texts);
     }
 
     private Text text(final String word, final String s) {
         Text text = new Text(s);
-
         if (s.equalsIgnoreCase(word)) {
             text.getStyleClass().add("wordUse");
         }

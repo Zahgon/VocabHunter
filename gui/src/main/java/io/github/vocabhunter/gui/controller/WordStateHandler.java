@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.marked.WordState;
@@ -16,49 +15,29 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
-
 import static javafx.beans.binding.Bindings.notEqual;
 
 public class WordStateHandler {
+
     private final Map<KeyCode, Runnable> keyHandlers = buildKeyHandlerMap();
 
     private SessionModel sessionModel;
 
     private Runnable nextWordSelector;
 
-    public void initialise(final Button buttonUnseen, final Button buttonKnown, final Button buttonUnknown, final SessionModel sessionModel,
-                            final ObjectBinding<WordState> wordStateProperty, final Runnable nextWordSelector) {
-        this.sessionModel = sessionModel;
-        this.nextWordSelector = nextWordSelector;
-
-        SimpleBooleanProperty editableProperty = sessionModel.editableProperty();
-        BooleanBinding resettableProperty = editableProperty.and(notEqual(WordState.UNSEEN, wordStateProperty));
-
-        buttonUnseen.visibleProperty().bind(resettableProperty);
-        buttonKnown.visibleProperty().bind(editableProperty);
-        buttonUnknown.visibleProperty().bind(editableProperty);
-
-        buttonUnseen.setOnAction(e -> processResponse(WordState.UNSEEN, false));
-        buttonKnown.setOnAction(e -> processResponse(WordState.KNOWN, true));
-        buttonUnknown.setOnAction(e -> processResponse(WordState.UNKNOWN, true));
+    public void initialise(final Button buttonUnseen, final Button buttonKnown, final Button buttonUnknown, final SessionModel sessionModel, final ObjectBinding<WordState> wordStateProperty, final Runnable nextWordSelector) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void processKeyPress(final KeyEvent event) {
-        KeyCode key = event.getCode();
-
-        if (EventHandlerTool.isWithoutModifier(event) && keyHandlers.containsKey(key)) {
-            event.consume();
-            keyHandlers.get(key).run();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void processResponse(final WordState state, final boolean isSelectionChange) {
         WordModel word = sessionModel.getCurrentWord();
-
         if (state == WordState.UNKNOWN) {
             sessionModel.addSelectedWord(word);
         } else {
@@ -73,19 +52,13 @@ public class WordStateHandler {
 
     private Map<KeyCode, Runnable> buildKeyHandlerMap() {
         Map<KeyCode, Runnable> map = new EnumMap<>(KeyCode.class);
-
         map.put(KeyCode.K, () -> processResponse(WordState.KNOWN, true));
         map.put(KeyCode.X, () -> processResponse(WordState.UNKNOWN, true));
         map.put(KeyCode.R, () -> processResponse(WordState.UNSEEN, false));
-
         return Collections.unmodifiableMap(map);
     }
 
     public void copyCurrentWord() {
-        ClipboardContent content = new ClipboardContent();
-        String currentWord = sessionModel.getCurrentWord().getWordIdentifier();
-        content.putString(currentWord);
-
-        Clipboard.getSystemClipboard().setContent(content);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

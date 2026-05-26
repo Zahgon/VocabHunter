@@ -1,11 +1,9 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.core;
 
 import jakarta.inject.Singleton;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -13,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Singleton
 public class ThreadPoolToolImpl implements ThreadPoolTool {
+
     private static final int GUI_POOL_SIZE = 3;
 
     private static final int FILTER_POOL_SIZE = 4;
@@ -29,26 +28,23 @@ public class ThreadPoolToolImpl implements ThreadPoolTool {
 
     @Override
     public ScheduledExecutorService guiThreadPool() {
-        return guiThreadPool;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public DelayedExecutor filterThreadPool() {
-        return wrappedFilterThreadPool;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Thread newDaemonThread(final Runnable r, final String prefix, final AtomicInteger nextId) {
         int threadNumber = nextId.getAndIncrement();
         Thread thread = new Thread(r, prefix + threadNumber);
-
         thread.setDaemon(true);
-
         return thread;
     }
 
     @Override
     public void forceShutdown() {
-        guiThreadPool.shutdownNow();
-        filterThreadPool.shutdownNow();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

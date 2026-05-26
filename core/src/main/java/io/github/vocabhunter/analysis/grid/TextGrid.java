@@ -1,17 +1,16 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.grid;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public final class TextGrid {
+
     private final List<GridLine> lines;
 
     private final List<GridColumn> columns;
@@ -22,49 +21,26 @@ public final class TextGrid {
     }
 
     public List<GridColumn> getColumns() {
-        return columns;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public List<GridLine> getLines() {
-        return lines;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        TextGrid textGrid = (TextGrid) o;
-
-        return new EqualsBuilder()
-            .append(lines, textGrid.lines)
-            .append(columns, textGrid.columns)
-            .isEquals();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
-            .append(lines)
-            .append(columns)
-            .toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        String header = IntStream.range(0, columns.size())
-            .mapToObj(i -> toString(i, columns.get(i)))
-            .collect(Collectors.joining(","));
-        String textBody = lines.stream()
-            .map(GridLine::toString)
-            .collect(Collectors.joining("\n"));
-
-        return header + ":\n" + textBody;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private String toString(final int index, final GridColumn column) {

@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.analysis.core.VocabHunterException;
@@ -26,10 +25,10 @@ import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import static io.github.vocabhunter.gui.common.EventHandlerTool.combine;
 
 public class SessionController {
+
     private static final Logger LOG = LoggerFactory.getLogger(SessionController.class);
 
     @FXML
@@ -114,33 +113,7 @@ public class SessionController {
     private SessionActions sessionActions;
 
     public void initialise(final GuiTaskHandler guiTaskHandler, final SessionModel sessionModel) {
-        this.sessionModel = sessionModel;
-
-        wordStateProperty = Bindings.select(sessionModel.currentWordProperty(), "state");
-
-        useListView.setItems(sessionModel.getUseList());
-        useListView.setCellFactory(s -> new UseListCell(sessionModel.currentWordProperty()));
-        wordListView.getSelectionModel().selectedItemProperty().addListener((o, old, word) -> updateCurrentWordProperty(word));
-
-        prepareWordListHandler();
-        wordStateHandler.initialise(buttonUnseen, buttonKnown, buttonUnknown, sessionModel, wordStateProperty, wordListHandler::selectNextWord);
-        wordNoteHandler.initialise(buttonNote, textAreaNotePreview, sessionModel);
-
-        prepareMainWord();
-        prepareSearchBar(guiTaskHandler);
-        preparePositionModel();
-        prepareWindowBindings();
-
-        mainWordHandler.processWordUpdate(sessionModel.getCurrentWord());
-
-        sessionModel.editableProperty().addListener((p, o, v) -> updateWordList());
-        sessionModel.filterSettingsProperty().addListener((p, o, v) -> updateWordListIfFilterEnabled());
-        sessionModel.enableFiltersProperty().addListener((p, o, v) -> updateWordList());
-
-        sessionActions = new SessionActions(
-            combine(searchHandler::processKeyPress, wordStateHandler::processKeyPress, wordNoteHandler::processKeyPress),
-            searchHandler::openSearch,
-            wordStateHandler::copyCurrentWord);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void prepareWordListHandler() {
@@ -155,14 +128,12 @@ public class SessionController {
 
     private void prepareSearchBar(final GuiTaskHandler guiTaskHandler) {
         SearchControls controls = new SearchControls(barSearch, fieldSearch, labelMatches, buttonCloseSearch, buttonSearchUp, buttonSearchDown);
-
         searchHandler = new SearchHandler(guiTaskHandler, i18nManager, wordListHandler, controls, sessionModel);
         searchHandler.prepare();
     }
 
     private void preparePositionModel() {
         PositionModel position = sessionModel.getPosition();
-
         position.positionIndexProperty().bind(wordListView.getSelectionModel().selectedIndexProperty());
         position.sizeProperty().bind(Bindings.size(wordListView.getItems()));
         position.editableProperty().bind(sessionModel.editableProperty());
@@ -175,7 +146,6 @@ public class SessionController {
 
     private void updateWordListIfFilterEnabled() {
         boolean isFilterEnabled = sessionModel.isEnableFilters();
-
         if (isFilterEnabled) {
             updateWordList();
         }
@@ -185,11 +155,9 @@ public class SessionController {
         boolean isEditable = sessionModel.isEditable();
         VocabHunterException exception;
         boolean isFilterSuccess;
-
         try {
             WordFilter filter = filterService.getFilter(sessionModel.isEnableFilters());
             MarkTool<WordModel> markTool = new MarkTool<>(filter, sessionModel.getAllWords());
-
             isFilterSuccess = markTool.isValidFilter();
             if (isFilterSuccess) {
                 sessionModel.updateWordList(isEditable, markTool);
@@ -201,7 +169,6 @@ public class SessionController {
             exception = e;
             isFilterSuccess = false;
         }
-
         if (!isFilterSuccess) {
             processFilterFailure(exception);
         }
@@ -227,6 +194,6 @@ public class SessionController {
     }
 
     public SessionActions getSessionActions() {
-        return sessionActions;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

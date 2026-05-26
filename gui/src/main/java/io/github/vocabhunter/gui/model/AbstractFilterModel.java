@@ -1,19 +1,17 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.model;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.*;
 import javafx.beans.value.ObservableNumberValue;
-
 import java.nio.file.Path;
-
 import static io.github.vocabhunter.analysis.session.FileNameTool.filename;
 
 public abstract class AbstractFilterModel {
+
     private final SimpleObjectProperty<Path> file = new SimpleObjectProperty<>();
 
     private final SimpleStringProperty filename = new SimpleStringProperty();
@@ -25,40 +23,36 @@ public abstract class AbstractFilterModel {
     }
 
     protected void replaceContent(final Path file) {
-        this.file.set(file);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     protected void bindValues() {
-        ObservableNumberValue count = wordCountProperty();
-        StringBinding filenameText = Bindings.createStringBinding(() -> filename(file.get()), file);
-
-        error.bind(Bindings.equal(count, 0));
-        filename.bind(filenameText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public abstract ObservableNumberValue wordCountProperty();
 
     public int getWordCount() {
-        return wordCountProperty().intValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Path getFile() {
-        return file.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ReadOnlyStringProperty filenameProperty() {
-        return filename;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getFilename() {
-        return filename.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public ReadOnlyBooleanProperty errorProperty() {
-        return error;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isError() {
-        return error.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

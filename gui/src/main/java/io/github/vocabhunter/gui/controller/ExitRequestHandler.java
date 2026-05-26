@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.model.MainModel;
@@ -16,6 +15,7 @@ import javafx.stage.WindowEvent;
 
 @Singleton
 public class ExitRequestHandler {
+
     private final GuiFileHandler guiFileHandler;
 
     private final SettingsManager settingsManager;
@@ -35,38 +35,26 @@ public class ExitRequestHandler {
     }
 
     public void initialise(final Stage stage) {
-        this.stage = stage;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void handleExitRequest(final WindowEvent e) {
-        if (model.isLocaleDefined() && statusManager.beginExit()) {
-            try {
-                if (processCloseRequest(e)) {
-                    statusManager.markSuccess();
-                }
-            } finally {
-                statusManager.completeAction();
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private boolean processCloseRequest(final WindowEvent e) {
         boolean isContinue = guiFileHandler.unsavedChangesCheck();
-
         if (isContinue) {
             WindowSettings windowSettings = new WindowSettings();
-
             windowSettings.setX(stage.getX());
             windowSettings.setY(stage.getY());
             windowSettings.setWidth(stage.getWidth());
             windowSettings.setHeight(stage.getHeight());
             model.getSessionModel().ifPresent(s -> saveSplitPositions(windowSettings, s));
-
             settingsManager.setWindowSettings(windowSettings);
         } else {
             e.consume();
         }
-
         return isContinue;
     }
 

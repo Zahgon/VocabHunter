@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.common;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class WordUseTool {
+
     private static final Pattern PATTERN = Pattern.compile("\\p{javaLetter}");
 
     private final String word;
@@ -26,38 +26,16 @@ public class WordUseTool {
     }
 
     public Stream<String> stream() {
-        List<String> result = new ArrayList<>();
-        String remaining = use;
-
-        do {
-            int next = nextMatch(remaining);
-
-            if (next == -1) {
-                result.add(remaining);
-                remaining = "";
-            } else {
-                if (next != 0) {
-                    result.add(remaining.substring(0, next));
-                    remaining = remaining.substring(next);
-                }
-                result.add(remaining.substring(0, wordLength));
-                remaining = remaining.substring(wordLength);
-            }
-        }
-        while (!"".equals(remaining));
-
-        return result.stream();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private int nextMatch(final String remaining) {
         int from = 0;
         int next = candidate(remaining, from);
-
         while (next != -1 && isFalsePositive(remaining, next)) {
             from = next + 1;
             next = candidate(remaining, from);
         }
-
         return next;
     }
 

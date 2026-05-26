@@ -1,17 +1,16 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.main;
 
 import io.github.vocabhunter.gui.common.BuildInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
 
 public final class ExecutableLogTool {
+
     private static final double BYTES_TO_MEGS = 1024d * 1024d;
 
     private static final Logger LOG = LoggerFactory.getLogger(ExecutableLogTool.class);
@@ -21,15 +20,11 @@ public final class ExecutableLogTool {
     }
 
     public static void logSystemDetails() {
-        logSystemProperties("Java: {} ({}) - JavaFX: {} - OS: {} ({}, {})", "java.version", "java.vendor", "javafx.version", "os.name", "os.version", "os.arch");
-        logRuntimeDetails();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static void logSystemProperties(final String template, final String... keys) {
-        Object[] args = Stream.of(keys)
-                .map(System::getProperty)
-                .toArray();
-
+        Object[] args = Stream.of(keys).map(System::getProperty).toArray();
         LOG.info(template, args);
     }
 
@@ -38,7 +33,6 @@ public final class ExecutableLogTool {
         String freeMemory = memory(Runtime.getRuntime().freeMemory());
         String maxMemory = memory(Runtime.getRuntime().maxMemory());
         String totalMemory = memory(Runtime.getRuntime().totalMemory());
-
         LOG.info("Cores: {} - Memory: ({} free, {} max, {} total)", cores, freeMemory, maxMemory, totalMemory);
     }
 
@@ -47,21 +41,19 @@ public final class ExecutableLogTool {
             return "no limit";
         } else {
             double value = bytes / BYTES_TO_MEGS;
-
             return new DecimalFormat("#.0M").format(value);
         }
     }
 
     public static void logShutdown() {
-        LOG.info("Application shutdown");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void logStartup() {
-        LOG.info("Application startup");
-        LOG.info("VocabHunter version: {}", BuildInfo.version());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static void logError(final Throwable e) {
-        LOG.error("Application error", e);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

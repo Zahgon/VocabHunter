@@ -1,16 +1,15 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.analysis.settings;
 
 import jakarta.inject.Singleton;
-
 import java.nio.file.Path;
 import java.util.List;
 
 @Singleton
 public class FileListManagerImpl extends BaseSettingsManager<FileList> implements FileListManager {
+
     public static final String SETTINGS_JSON = "file-list.json";
 
     public FileListManagerImpl() {
@@ -23,16 +22,11 @@ public class FileListManagerImpl extends BaseSettingsManager<FileList> implement
 
     @Override
     public List<BaseListedFile> getFilterFiles() {
-        FileList bean = readSettings();
-
-        return bean.getFilterFiles();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void setFilterFiles(final List<BaseListedFile> files) {
-        FileList bean = readSettings();
-
-        bean.setFilterFiles(files);
-        writeSettings(bean);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

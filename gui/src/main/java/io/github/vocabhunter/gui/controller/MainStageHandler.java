@@ -1,7 +1,6 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.controller;
 
 import io.github.vocabhunter.gui.common.Placement;
@@ -19,6 +18,7 @@ import javafx.stage.Stage;
 
 @Singleton
 public class MainStageHandler {
+
     private final FxmlHandler fxmlHandler;
 
     private final MainController mainController;
@@ -40,10 +40,7 @@ public class MainStageHandler {
     private Stage stage;
 
     @Inject
-    public MainStageHandler(
-        final FxmlHandler fxmlHandler, final MainController mainController, final LanguageController languageController, final SessionStateHandler sessionStateHandler,
-        final PlacementManager placementManager, final LanguageHandler languageHandler, final MainModel mainModel, final ExternalEventBroker externalEventBroker,
-        final ExitRequestHandler exitRequestHandler) {
+    public MainStageHandler(final FxmlHandler fxmlHandler, final MainController mainController, final LanguageController languageController, final SessionStateHandler sessionStateHandler, final PlacementManager placementManager, final LanguageHandler languageHandler, final MainModel mainModel, final ExternalEventBroker externalEventBroker, final ExitRequestHandler exitRequestHandler) {
         this.fxmlHandler = fxmlHandler;
         this.mainController = mainController;
         this.languageController = languageController;
@@ -56,33 +53,11 @@ public class MainStageHandler {
     }
 
     public void initialise(final Stage stage) {
-        this.stage = stage;
-        stage.setOnCloseRequest(exitRequestHandler::handleExitRequest);
-        languageHandler.initialiseSceneSwitcher(this::applyNewScene);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void applyNewScene() {
-        boolean isLocaleDefined = mainModel.isLocaleDefined();
-        Parent root;
-
-        if (isLocaleDefined) {
-            languageController.closeView();
-            root = fxmlHandler.loadNode(ViewFxml.MAIN);
-            mainController.initialise(stage);
-        } else {
-            root = fxmlHandler.loadNode(ViewFxml.LANGUAGE);
-            languageController.initialise();
-        }
-
-        Scene scene = new Scene(root);
-
-        scene.setOnKeyPressed(this::handleKeyEvent);
-        stage.setScene(scene);
-
-        positionScene(isLocaleDefined);
-        if (isLocaleDefined) {
-            externalEventBroker.markMainDisplayShown();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void positionScene(final boolean isLocaleDefined) {
@@ -96,7 +71,6 @@ public class MainStageHandler {
 
     private void positionPrincipalScene() {
         Placement placement = placementManager.getMainWindow();
-
         stage.setWidth(placement.width());
         stage.setHeight(placement.height());
         if (placement.positioned()) {
@@ -108,8 +82,6 @@ public class MainStageHandler {
     }
 
     private void handleKeyEvent(final KeyEvent event) {
-        sessionStateHandler.getSessionActions()
-            .map(SessionActions::getKeyPressHandler)
-            .ifPresent(k -> k.handle(event));
+        sessionStateHandler.getSessionActions().map(SessionActions::getKeyPressHandler).ifPresent(k -> k.handle(event));
     }
 }

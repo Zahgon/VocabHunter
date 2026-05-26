@@ -1,16 +1,15 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.settings;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.vocabhunter.gui.i18n.SupportedLocale;
-
 import java.nio.file.Path;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VocabHunterSettings {
+
     public static final int DEFAULT_MINIMUM_LETTERS = 2;
 
     public static final int DEFAULT_MINIMUM_OCCURRENCES = 2;
@@ -36,74 +35,74 @@ public class VocabHunterSettings {
     private SupportedLocale locale;
 
     public Path getDocumentsPath() {
-        return documentsPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setDocumentsPath(final Path documentsPath) {
-        this.documentsPath = documentsPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Path getSessionsPath() {
-        return sessionsPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setSessionsPath(final Path sessionsPath) {
-        this.sessionsPath = sessionsPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Path getExportPath() {
-        return exportPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setExportPath(final Path exportPath) {
-        this.exportPath = exportPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public Path getWordListPath() {
-        return wordListPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setWordListPath(final Path wordListPath) {
-        this.wordListPath = wordListPath;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getFilterMinimumLetters() {
-        return filterMinimumLetters;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFilterMinimumLetters(final int filterMinimumLetters) {
-        this.filterMinimumLetters = filterMinimumLetters;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getFilterMinimumOccurrences() {
-        return filterMinimumOccurrences;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setFilterMinimumOccurrences(final int filterMinimumOccurrences) {
-        this.filterMinimumOccurrences = filterMinimumOccurrences;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean isAllowInitialCapitals() {
-        return isAllowInitialCapitals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setAllowInitialCapitals(final boolean allowInitialCapitals) {
-        isAllowInitialCapitals = allowInitialCapitals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public WindowSettings getWindowSettings() {
-        return windowSettings;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setWindowSettings(final WindowSettings windowSettings) {
-        this.windowSettings = windowSettings;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public SupportedLocale getLocale() {
-        return locale;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setLocale(final SupportedLocale locale) {
-        this.locale = locale;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -1,12 +1,12 @@
 /*
  * Open Source Software published under the Apache Licence, Version 2.0.
  */
-
 package io.github.vocabhunter.gui.common;
 
 import javafx.scene.Node;
 
 public final class ControllerAndView<C, V extends Node> {
+
     private final C controller;
 
     private final V view;
@@ -17,10 +17,10 @@ public final class ControllerAndView<C, V extends Node> {
     }
 
     public C getController() {
-        return controller;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public V getView() {
-        return view;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
